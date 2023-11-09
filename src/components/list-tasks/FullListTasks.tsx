@@ -8,6 +8,7 @@ interface ItemsTasksProps {
     toggleCompleteTask: (id: number) => void;
 }
 
+
 const FullListTasks: FC<ItemsTasksProps> = ({ listTasks, toggleCompleteTask }) => {
     return (
         <div>

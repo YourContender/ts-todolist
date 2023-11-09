@@ -28,8 +28,21 @@ const Forms: FC<ItemsTasksProps> = ({ setListTasks, listTasks }) => {
         })
     }
 
-    const addTaskToList = () => {  
-        setListTasks([...listTasks, task]);
+    const addTaskToDatabase = async () => {
+        const res = await fetch('https://654d3af877200d6ba85a2a97.mockapi.io/listTasks', {
+            method: 'POST',
+            body: JSON.stringify({
+                ...task
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (res.status === 201) {
+            setListTasks([...listTasks, task]);
+        }
     }
 
     return (
@@ -56,7 +69,7 @@ const Forms: FC<ItemsTasksProps> = ({ setListTasks, listTasks }) => {
             </div>
 
             <button 
-                onClick={() => addTaskToList()} 
+                onClick={() => addTaskToDatabase()} 
                 className="forms_btn"
             >
                 add task
