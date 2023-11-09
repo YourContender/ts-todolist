@@ -1,47 +1,40 @@
-import { FC, useState, useEffect, useRef } from "react";
-import { TodoTask } from "../types/data";
-import { ListTasks } from "./ListTasks";
+import { FC, useState } from "react";
+import { Forms } from "./forms/Forms";
+import { Task } from "../types/types";
+import { FullListTasks } from "../components/list-tasks/FullListTasks";
 
 const App: FC = () => {
-    const [value, setValue] = useState('');
-    const [listTasks, setListTasks] = useState<TodoTask[]>([]);
+    const [listTasks, setListTasks] = useState<Task[]>([{
+        id: Date.now(),
+        title: "name",
+        description: "hello world",
+        category: "home",
+        time: new Date(),
+        complete: false
+    }]);
 
-    const inputRef = useRef<HTMLInputElement>(null);
-
-    const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-        setValue(e.target.value)
+    const toggleCompleteTask = (id: number): void => {
+        setListTasks(listTasks.map(item => {
+            return item.id !== id ? item : {
+                ...item,
+                complete: !item.complete
+            }
+        }))
     }
 
-    const addTodoInList = () => {
-        if (value) {
-            setListTasks([...listTasks, {
-                id: Date.now(),
-                title: value,
-                complete: false
-            }])
-
-            setValue('');
-        }
-    }
-
-    useEffect(() => {
-        if (inputRef.current) {
-            inputRef.current.focus()
-        }
-    }, [])
-
-	return <div>
+	return (
         <div>
-            <input 
-                type="enter your task" 
-                value={value} 
-                onChange={handleChange} 
-                ref={inputRef}
-            />
-            <button onClick={addTodoInList}>add task</button>
+            <Forms 
+                setListTasks={setListTasks} 
+                listTasks={listTasks}/>
+            <FullListTasks 
+                setListTasks={setListTasks} 
+                listTasks={listTasks} 
+                toggleCompleteTask={toggleCompleteTask}/>
         </div>
-        <ListTasks items={listTasks}/>
-    </div>;
+    )
 };
 
 export default App;
+
+
