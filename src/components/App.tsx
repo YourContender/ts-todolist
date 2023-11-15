@@ -2,23 +2,28 @@ import { FC, useEffect, useState } from "react";
 import { Forms } from "./forms/Forms";
 import { Task } from "../types/types";
 import { FullListTasks } from "../components/list-tasks/FullListTasks";
+import { Header } from "./header/Header";
+
+// {
+//     title: "name",
+//     description: "hello world",
+//     category: "home",
+//     time: new Date(),
+//     complete: false,
+//     id: "0"
+// }
 
 const App: FC = () => {
-    const [listTasks, setListTasks] = useState<Task[]>([{
-        id: Date.now(),
-        title: "name",
-        description: "hello world",
-        category: "home",
-        time: new Date(),
-        complete: false
-    }]);
+    const [listTasks, setListTasks] = useState<Task[]>([]);
+    const [showModalForm, setShowModalForm] = useState<boolean>(false);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const res = await fetch('https://654d3af877200d6ba85a2a97.mockapi.io/listTasks');
-                const body = await res.json();
+                const body: Task[] = await res.json();
                 setListTasks(body);
+                console.log('work', body)
             } catch {
                 console.log('error')
             }
@@ -26,7 +31,7 @@ const App: FC = () => {
         fetchData();
     }, [])
 
-    const toggleCompleteTask = (id: number): void => {
+    const toggleCompleteTask = (id: string): void => {
         setListTasks(listTasks.map(item => {
             return item.id !== id ? item : {
                 ...item,
@@ -35,15 +40,40 @@ const App: FC = () => {
         }))
     }
 
+    const removeTaskFromList = async (id: string) => {
+        let filtered = listTasks.filter(item => {
+            console.log('item id: ', item.id);
+            console.log('id: ', id)
+            return item.id !== id
+        });
+        let API = 'https://654d3af877200d6ba85a2a97.mockapi.io/listTasks';
+
+        const res = await fetch(`${API}/${id}`, {
+            method: 'DELETE'
+        });
+
+        if (res.status === 200) {
+            setListTasks(filtered);
+        }
+    }
+
 	return (
         <div>
-            <Forms 
-                setListTasks={setListTasks} 
-                listTasks={listTasks}/>
+            <Header />
+            {
+                showModalForm ? 
+                    <Forms 
+                        setListTasks={setListTasks} 
+                        listTasks={listTasks}
+                        setShowModalForm={setShowModalForm}/>
+                : null
+            }
             <FullListTasks 
                 setListTasks={setListTasks} 
                 listTasks={listTasks} 
-                toggleCompleteTask={toggleCompleteTask}/>
+                toggleCompleteTask={toggleCompleteTask}
+                setShowModalForm={setShowModalForm}
+                removeTaskFromList={removeTaskFromList}/>
         </div>
     )
 };

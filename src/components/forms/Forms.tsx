@@ -4,19 +4,24 @@ import { Task } from "../../types/types";
 interface ItemsTasksProps {
     listTasks: Task[];
     setListTasks: React.Dispatch<React.SetStateAction<Task[]>>
+    setShowModalForm: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const initialStateTask = {
-    id: Date.now(),
-    title: '',
-    description: '',
-    category: '',
-    time: new Date(),
-    complete: false
-}
+const Forms: FC<ItemsTasksProps> = ({ 
+    setListTasks, listTasks, setShowModalForm
+}) => {
+    const initialStateTask = {
+        title: '',
+        description: '',
+        category: '',
+        time: new Date(),
+        complete: false,
+        id: ''
+    }
 
-const Forms: FC<ItemsTasksProps> = ({ setListTasks, listTasks }) => {
     const [task, setTask] = useState<Task>(initialStateTask);
+
+    const nextIdForTask: string  =  listTasks.length > 0 ? String(listTasks.length + 1) : "1";
 
     const createTask = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTask({
@@ -24,11 +29,12 @@ const Forms: FC<ItemsTasksProps> = ({ setListTasks, listTasks }) => {
             [e.target.name]: e.target.value,
             time: new Date(),
             complete: false,
-            id: Date.now()
+            id: nextIdForTask
         })
     }
 
     const addTaskToDatabase = async () => {
+        console.log('task: ', task)
         const res = await fetch('https://654d3af877200d6ba85a2a97.mockapi.io/listTasks', {
             method: 'POST',
             body: JSON.stringify({
@@ -47,6 +53,11 @@ const Forms: FC<ItemsTasksProps> = ({ setListTasks, listTasks }) => {
 
     return (
         <div className="forms">
+            <button
+                onClick={() => setShowModalForm(false)}
+            >
+                &times;
+            </button>
             <div className="forms_fields">
                 <input 
                     name="title"
