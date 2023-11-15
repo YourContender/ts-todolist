@@ -3,12 +3,12 @@ import { Task } from "../../../types/types";
 
 interface ItemTaskProps {
     item: Task;
-    toggleCompleteTask: (id: string) => void;
     removeTaskFromList: (id: string) => void;
+    toggleCompleteTask: (id: string) => void;
 }
 
 const ItemTask: FC<ItemTaskProps> = ({ 
-    item, toggleCompleteTask, removeTaskFromList
+    item, removeTaskFromList, toggleCompleteTask
 }) => {
     const formattedDate = new Intl.DateTimeFormat('en-US', {
         day: '2-digit',

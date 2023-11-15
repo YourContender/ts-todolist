@@ -5,14 +5,47 @@ import { ItemTask } from "./item-task/ItemTask";
 interface ItemsTasksProps {
     listTasks: Task[];
     setListTasks: React.Dispatch<React.SetStateAction<Task[]>>
-    toggleCompleteTask: (id: string) => void;
     removeTaskFromList: (id: string) => void;
     setShowModalForm: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const FullListTasks: FC<ItemsTasksProps> = ({ 
-    listTasks, setShowModalForm, toggleCompleteTask, removeTaskFromList
+    listTasks, setShowModalForm, removeTaskFromList, setListTasks
 }) => {
+
+    const toggleCompleteTask = async (id: string) => {
+        let filtered = listTasks.map(item => {
+            if (item.id === id) {
+                return { 
+                    title: item.title,
+                    description: item.description,
+                    id: item.id,
+                    category: item.category,
+                    complete: !item.complete,
+                    time: item.time
+                }
+            }
+
+            return item;
+        })
+
+        let data = filtered.filter(item => item.id === id);
+        console.log('filtered: ', data[0]);
+
+        const res = await fetch(`https://654d3af877200d6ba85a2a97.mockapi.io/listTasks/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(data[0]),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+
+        if (res.status === 200) {
+            setListTasks(filtered);
+        }
+
+    }
     return (
         <div>
             {
@@ -20,8 +53,8 @@ const FullListTasks: FC<ItemsTasksProps> = ({
                     return <ItemTask 
                         key={i} 
                         item={item} 
-                        toggleCompleteTask={toggleCompleteTask}
                         removeTaskFromList={removeTaskFromList}
+                        toggleCompleteTask={toggleCompleteTask}
                     />
                 })
             }

@@ -30,15 +30,7 @@ const App: FC = () => {
         } 
         fetchData();
     }, [])
-
-    const toggleCompleteTask = (id: string): void => {
-        setListTasks(listTasks.map(item => {
-            return item.id !== id ? item : {
-                ...item,
-                complete: !item.complete
-            }
-        }))
-    }
+        
 
     const removeTaskFromList = async (id: string) => {
         let filtered = listTasks.filter(item => {
@@ -71,7 +63,6 @@ const App: FC = () => {
             <FullListTasks 
                 setListTasks={setListTasks} 
                 listTasks={listTasks} 
-                toggleCompleteTask={toggleCompleteTask}
                 setShowModalForm={setShowModalForm}
                 removeTaskFromList={removeTaskFromList}/>
         </div>
