@@ -13,6 +13,12 @@ const FullListTasks: FC<ItemsTasksProps> = ({
     listTasks, setShowModalForm, removeTaskFromList, setListTasks
 }) => {
 
+    const quantityCompleteTasks = () => {
+        let listComplete = listTasks.filter(item => item.complete)
+
+        return listComplete.length;
+    }
+
     const toggleCompleteTask = async (id: string) => {
         let filtered = listTasks.map(item => {
             if (item.id === id) {
@@ -60,7 +66,7 @@ const FullListTasks: FC<ItemsTasksProps> = ({
             }
 
             <div>
-                completed: 5
+                completed: {quantityCompleteTasks()}
             </div>
             <div>
                 <button onClick={() => setShowModalForm(true)}>add task</button>
