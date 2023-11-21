@@ -1,7 +1,14 @@
 import { FC, useState, useEffect } from "react";
 import '../../sass/header-styles/Header-styles.scss';
+import { Test } from "./Test";
+import { Task } from "../../types/types";
 
-const Header: FC = () => {
+interface ListTasksProps {
+    listTasks: Task[];
+}
+
+const Header: FC<ListTasksProps> = ({ listTasks }) => {
+    const [percentDone, setPercentDone ] = useState(0);
     const [currentTime, setCurrentTime] = useState(new Date());
     
     useEffect(() => {
@@ -12,7 +19,12 @@ const Header: FC = () => {
         return () => clearInterval(intervalId);
     }, []);
 
-    
+    useEffect(() => {
+        let completeListTasks = listTasks.filter(item => item.complete === true);
+
+        setPercentDone(Math.floor(completeListTasks.length * 100 / listTasks.length))
+    }, [listTasks])
+
     const formattedDate = new Intl.DateTimeFormat('en-US', {
         day: '2-digit',
         month: '2-digit',
@@ -49,7 +61,8 @@ const Header: FC = () => {
                 </div>
 
                 <div className="header_right-complete">
-                    <span>65% completed tasks</span>
+                    <Test percent={!isNaN(percentDone) ? percentDone : 0}/>
+                    <span>{!isNaN(percentDone) ? percentDone : 0}% completed tasks</span>
                 </div>
             </div>
         </div>

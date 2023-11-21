@@ -3,6 +3,7 @@ import { Forms } from "./forms/Forms";
 import { Task } from "../types/types";
 import { FullListTasks } from "../components/list-tasks/FullListTasks";
 import { Header } from "./header/Header";
+import { Test } from "./header/Test";
 
 // {
 //     title: "name",
@@ -51,7 +52,7 @@ const App: FC = () => {
 
 	return (
         <div>
-            <Header />
+            <Header listTasks={listTasks}/>
             {
                 showModalForm ? 
                     <Forms 
@@ -65,6 +66,8 @@ const App: FC = () => {
                 listTasks={listTasks} 
                 setShowModalForm={setShowModalForm}
                 removeTaskFromList={removeTaskFromList}/>
+            
+            <Test percent={20}/>
         </div>
     )
 };

@@ -52,6 +52,10 @@
             }
         }
         &-complete {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            height: 40px;
             color: #7ab87f;
             font-weight: 500;
             margin-top: 15px;
@@ -60,6 +64,9 @@
             background-color: #1615157e;
             padding: 3px 7px 3px 7px;
             border-radius: 15px;
+            span {
+                margin-left: 5px;
+            }
         }
     }
 }

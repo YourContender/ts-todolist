@@ -1,5 +1,6 @@
 import { FC } from "react"; 
 import { Task } from "../../../types/types";
+import '../../../sass/list-tasks/Tasks-style.scss';
 
 interface ItemTaskProps {
     item: Task;
@@ -18,23 +19,40 @@ const ItemTask: FC<ItemTaskProps> = ({
 
     return (
         <div className="task">
+            <div className="task_category">
+                {
+                    item.category === 'home' ?
+                        <img src='/category-img/home.png' alt="home" />
+                    : item.category === 'life' ? 
+                        <img src='/category-img/life.png' alt="life" />
+                    : <img src='/category-img/work.png' alt="work" />
+                }
+            </div>
             <input 
                 type="checkbox" 
                 checked={item.complete} 
                 onChange={() => toggleCompleteTask(item.id)}
                 />
-            <div>
-                <h1>{item.title}</h1>
-                <span>{item.description}</span>
-                <span>{formattedDate}</span>
+            <div className="task_content">
+                <div className="task_content-title">
+                    <h1>{item.title}</h1>
+                </div>
+                <div className="task_content-descr">
+                    <span>{item.description}</span>
+                </div>
             </div>
 
-            <button>edit</button>
-            <button
-                onClick={() => removeTaskFromList(item.id)}
-            >
-                delete
-            </button>
+            <div className="task_methods">
+                <span>{formattedDate}</span>
+                
+                <button
+                    className="task_remove"
+                    onClick={() => removeTaskFromList(item.id)}
+                >
+                    &times;
+                </button>
+            </div>
+
         </div>
     )
 }

@@ -1,0 +1,25 @@
+.task {
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #000;
+    width: 800px;
+    margin-top: 20px;
+    &_content {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        &-title {
+            h1 {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+    &_category {
+        img {
+            width: 55px;
+            height: 70px;
+        }
+    }
+}

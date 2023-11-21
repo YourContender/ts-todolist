@@ -20,8 +20,13 @@ const Forms: FC<ItemsTasksProps> = ({
     }
 
     const [task, setTask] = useState<Task>(initialStateTask);
+    const [selectedCategory, setSelectedCategory] = useState<string>('life');
 
     const nextIdForTask: string  =  listTasks.length > 0 ? String(listTasks.length + 1) : "1";
+
+    const changeCategoryTask = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedCategory(e.target.value);
+    }
 
     const createTask = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTask({
@@ -29,16 +34,18 @@ const Forms: FC<ItemsTasksProps> = ({
             [e.target.name]: e.target.value,
             time: new Date(),
             complete: false,
-            id: nextIdForTask
+            id: nextIdForTask,
+            category: selectedCategory
         })
     }
 
     const addTaskToDatabase = async () => {
-        console.log('task: ', task)
+        console.log('task: ', selectedCategory)
         const res = await fetch('https://654d3af877200d6ba85a2a97.mockapi.io/listTasks', {
             method: 'POST',
             body: JSON.stringify({
-                ...task
+                ...task,
+                category: selectedCategory
             }),
             headers: {
                 'Accept': 'application/json',
@@ -59,22 +66,26 @@ const Forms: FC<ItemsTasksProps> = ({
                 &times;
             </button>
             <div className="forms_fields">
+                <select 
+                    name="category"
+                    value={selectedCategory}
+                    onChange={changeCategoryTask}
+                >
+                    <option value="home">home</option>
+                    <option value="life">life</option>
+                    <option value="work">work</option>
+                </select>
                 <input 
                     name="title"
                     type="text" 
                     placeholder="enter title"
                     onChange={createTask}
+                    // disabled={true}
                 />
                 <input 
                     name="description"
                     type="text"
                     placeholder="enter description"
-                    onChange={createTask}
-                />
-                <input 
-                    name="category"
-                    type="text" 
-                    placeholder="enter category"
                     onChange={createTask}
                 />
             </div>

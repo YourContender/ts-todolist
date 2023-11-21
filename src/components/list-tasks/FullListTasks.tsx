@@ -1,6 +1,7 @@
 import { FC } from "react"; 
 import { Task } from "../../types/types";
 import { ItemTask } from "./item-task/ItemTask";
+import '../../sass/list-tasks/ListTasks-style.scss';
 
 interface ItemsTasksProps {
     listTasks: Task[];
@@ -53,7 +54,7 @@ const FullListTasks: FC<ItemsTasksProps> = ({
 
     }
     return (
-        <div>
+        <div className="tasks">
             {
                 listTasks.map((item, i) => {
                     return <ItemTask 
