@@ -1,6 +1,5 @@
 .task {
     display: flex;
-    // justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #000;
     width: 800px;
@@ -17,9 +16,29 @@
         }
     }
     &_category {
+        &-home, &-life, &-work {
+            font-size: 52px;
+        }
         img {
-            width: 55px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
+            border-radius: 100%;
+        }
+    }
+    &_methods {
+        display: flex;
+        align-items:flex-end;
+        width: 100px;
+        height: 64px;
+        &-remove, &-date {  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        &-remove {
+            // background-color: rgba(245, 69, 137, 0.233);
         }
     }
 }

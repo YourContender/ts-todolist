@@ -1,5 +1,8 @@
-import { FC } from "react"; 
+import { FC, useState } from "react"; 
 import { Task } from "../../../types/types";
+import { IoHomeOutline } from "react-icons/io5";
+import { MdNightlife } from "react-icons/md";
+import { BsPersonWorkspace } from "react-icons/bs";
 import '../../../sass/list-tasks/Tasks-style.scss';
 
 interface ItemTaskProps {
@@ -11,6 +14,8 @@ interface ItemTaskProps {
 const ItemTask: FC<ItemTaskProps> = ({ 
     item, removeTaskFromList, toggleCompleteTask
 }) => {
+    const [showRemoveButton, setShowRemoveButton] = useState<boolean>(false);
+
     const formattedDate = new Intl.DateTimeFormat('en-US', {
         day: '2-digit',
         month: '2-digit',
@@ -22,10 +27,10 @@ const ItemTask: FC<ItemTaskProps> = ({
             <div className="task_category">
                 {
                     item.category === 'home' ?
-                        <img src='/category-img/home.png' alt="home" />
+                        <IoHomeOutline className="task_category-home"/>
                     : item.category === 'life' ? 
-                        <img src='/category-img/life.png' alt="life" />
-                    : <img src='/category-img/work.png' alt="work" />
+                        <MdNightlife className="task_category-life"/>
+                    : <BsPersonWorkspace className="task_category-work"/>
                 }
             </div>
             <input 
@@ -43,14 +48,26 @@ const ItemTask: FC<ItemTaskProps> = ({
             </div>
 
             <div className="task_methods">
-                <span>{formattedDate}</span>
-                
-                <button
-                    className="task_remove"
-                    onClick={() => removeTaskFromList(item.id)}
-                >
-                    &times;
-                </button>
+                {
+                    !showRemoveButton 
+                    ? 
+                        <div className="task_methods-date"
+                            onClick={() => setShowRemoveButton(true)}
+                        >
+                            <span>{formattedDate}</span>
+                        </div>
+                    :
+                    <div className="task_methods-remove"
+                        onClick={() => setShowRemoveButton(false)}
+                    >
+                        <button
+                            className="task_remove"
+                            onClick={() => removeTaskFromList(item.id)}
+                        >
+                            &times;
+                        </button>
+                    </div>
+                }
             </div>
 
         </div>

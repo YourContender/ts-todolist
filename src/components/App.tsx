@@ -5,15 +5,6 @@ import { FullListTasks } from "../components/list-tasks/FullListTasks";
 import { Header } from "./header/Header";
 import { Test } from "./header/Test";
 
-// {
-//     title: "name",
-//     description: "hello world",
-//     category: "home",
-//     time: new Date(),
-//     complete: false,
-//     id: "0"
-// }
-
 const App: FC = () => {
     const [listTasks, setListTasks] = useState<Task[]>([]);
     const [showModalForm, setShowModalForm] = useState<boolean>(false);

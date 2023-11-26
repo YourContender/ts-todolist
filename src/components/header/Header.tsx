@@ -8,8 +8,11 @@ interface ListTasksProps {
 }
 
 const Header: FC<ListTasksProps> = ({ listTasks }) => {
-    const [percentDone, setPercentDone ] = useState(0);
+    const [percentDone, setPercentDone ] = useState<number>(0);
     const [currentTime, setCurrentTime] = useState(new Date());
+    const [quantityHomeTasks, setQuantityHomeTasks] = useState<number>(0);
+    const [quantityLifeTasks, setQuantityLifeTasks] = useState<number>(0);
+    const [quantityWorkTasks, setQuantityWorkTasks] = useState<number>(0);
     
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -21,6 +24,13 @@ const Header: FC<ListTasksProps> = ({ listTasks }) => {
 
     useEffect(() => {
         let completeListTasks = listTasks.filter(item => item.complete === true);
+        let homeTasks = listTasks.filter(item => item.category === 'home');
+        let lifeTasks = listTasks.filter(item => item.category === 'life');
+        let workTasks = listTasks.filter(item => item.category === 'work');
+
+        setQuantityHomeTasks(homeTasks.length);
+        setQuantityLifeTasks(lifeTasks.length);
+        setQuantityWorkTasks(workTasks.length);
 
         setPercentDone(Math.floor(completeListTasks.length * 100 / listTasks.length))
     }, [listTasks])
@@ -47,15 +57,15 @@ const Header: FC<ListTasksProps> = ({ listTasks }) => {
             <div className="header_right">
                 <div className="header_right-category">
                     <div className="header_right-home">
-                        <p>24</p>
+                        <p>{quantityHomeTasks}</p>
                         <span>home</span>
                     </div>
                     <div className="header_right-personal">
-                        <p>12</p>
+                        <p>{quantityLifeTasks}</p>
                         <span>life</span>
                     </div>
                     <div className="header_right-work">
-                        <p>17</p>
+                        <p>{quantityWorkTasks}</p>
                         <span>work</span>
                     </div>
                 </div>
