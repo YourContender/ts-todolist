@@ -12,7 +12,7 @@ const App: FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('https://654d3af877200d6ba85a2a97.mockapi.io/listTasks');
+                const res = await fetch('http://localhost:3001/listTasks');
                 const body: Task[] = await res.json();
                 setListTasks(body);
                 console.log('work', body)
@@ -30,7 +30,7 @@ const App: FC = () => {
             console.log('id: ', id)
             return item.id !== id
         });
-        let API = 'https://654d3af877200d6ba85a2a97.mockapi.io/listTasks';
+        let API = 'http://localhost:3001/listTasks';
 
         const res = await fetch(`${API}/${id}`, {
             method: 'DELETE'

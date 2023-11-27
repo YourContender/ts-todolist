@@ -39,7 +39,7 @@ const FullListTasks: FC<ItemsTasksProps> = ({
         let data = filtered.filter(item => item.id === id);
         console.log('filtered: ', data[0]);
 
-        const res = await fetch(`https://654d3af877200d6ba85a2a97.mockapi.io/listTasks/${id}`, {
+        const res = await fetch(`http://localhost:3001/listTasks/${id}`, {
             method: 'PUT',
             body: JSON.stringify(data[0]),
             headers: {

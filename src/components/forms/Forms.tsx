@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
 import { Task } from "../../types/types";
+import { v4 as uuidv4 } from 'uuid';
 
 interface ItemsTasksProps {
     listTasks: Task[];
@@ -22,7 +23,7 @@ const Forms: FC<ItemsTasksProps> = ({
     const [task, setTask] = useState<Task>(initialStateTask);
     const [selectedCategory, setSelectedCategory] = useState<string>('life');
 
-    const nextIdForTask: string  =  listTasks.length > 0 ? String(listTasks.length + 1) : "1";
+    const uuid: string = uuidv4();
 
     const changeCategoryTask = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedCategory(e.target.value);
@@ -34,14 +35,14 @@ const Forms: FC<ItemsTasksProps> = ({
             [e.target.name]: e.target.value,
             time: new Date(),
             complete: false,
-            id: nextIdForTask,
+            id: uuid,
             category: selectedCategory
         })
     }
 
     const addTaskToDatabase = async () => {
         console.log('task: ', selectedCategory)
-        const res = await fetch('https://654d3af877200d6ba85a2a97.mockapi.io/listTasks', {
+        const res = await fetch('http://localhost:3001/listTasks', {
             method: 'POST',
             body: JSON.stringify({
                 ...task,
