@@ -3,6 +3,8 @@ import { Task } from "../../../types/types";
 import { IoHomeOutline } from "react-icons/io5";
 import { MdNightlife } from "react-icons/md";
 import { BsPersonWorkspace } from "react-icons/bs";
+import { IoMdDoneAll } from "react-icons/io";
+import { IoCheckmarkSharp } from "react-icons/io5";
 import '../../../sass/list-tasks/Tasks-style.scss';
 
 interface ItemTaskProps {
@@ -33,11 +35,20 @@ const ItemTask: FC<ItemTaskProps> = ({
                     : <BsPersonWorkspace className="task_category-work"/>
                 }
             </div>
-            <input 
-                type="checkbox" 
-                checked={item.complete} 
-                onChange={() => toggleCompleteTask(item.id)}
-                />
+
+            <div>
+                {
+                    item.complete ?
+                        <IoMdDoneAll 
+                            className="task_checkbox done" 
+                            onClick={() => toggleCompleteTask(item.id)}/> 
+                        :  
+                        <IoCheckmarkSharp 
+                            className="task_checkbox progress" 
+                            onClick={() => toggleCompleteTask(item.id)}/>   
+                }
+            </div>
+
             <div className="task_content">
                 <div className="task_content-title">
                     <h1>{item.title}</h1>

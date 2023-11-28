@@ -1,6 +1,7 @@
 import { FC } from "react"; 
 import { Task } from "../../types/types";
 import { ItemTask } from "./item-task/ItemTask";
+import { TfiPlus } from "react-icons/tfi";
 import '../../sass/list-tasks/ListTasks-style.scss';
 
 interface ItemsTasksProps {
@@ -66,11 +67,15 @@ const FullListTasks: FC<ItemsTasksProps> = ({
                 })
             }
 
-            <div>
-                completed: {quantityCompleteTasks()}
-            </div>
-            <div>
-                <button onClick={() => setShowModalForm(true)}>add task</button>
+            <div className="tasks_data">
+                <div className="tasks_data-result">  
+                    completed: <span>{quantityCompleteTasks()}</span> 
+                </div>
+                <div className="tasks_data-create">
+                    <button onClick={() => setShowModalForm(true)}>
+                        <TfiPlus />
+                    </button>
+                </div>
             </div>
         </div>
     )

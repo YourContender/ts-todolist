@@ -23,12 +23,18 @@
             color: #fff;
             margin-bottom: 20px;
             font-weight: 700;
+            letter-spacing: 2px;
         }
         &-date {
             font-size: 18px;
             color: #fff;
             font-weight: 400;
+            letter-spacing: 1px;
         }
+    }
+    &_left {
+        font-family: 'Abril Fatface', serif;
+        
     }
     &_right {
         margin-left: 55px;

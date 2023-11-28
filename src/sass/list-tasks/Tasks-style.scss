@@ -1,27 +1,52 @@
 .task {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #000;
+    border-bottom: .5px solid #807e7e;
     width: 800px;
     margin-top: 20px;
+    padding-bottom: 7px;
+    cursor: pointer;
+    &_checkbox {
+        margin-left: 25px;
+        font-size: 25px;
+    }
     &_content {
         display: flex;
         flex-direction: column;
         width: 80%;
+        padding-left: 30px;
         &-title {
             h1 {
                 margin: 0;
                 padding: 0;
+                font-family:'Times New Roman', Times, serif;
+                font-weight: 900;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                font-size: 24px;
             }
         }
     }
     &_category {
+        width: 40px;
+        height: 35px;
+        padding: 10px;
+        background-color: rgba(93, 216, 183, 0.219);
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: .1px solid rgba(4, 39, 30, 0.986);
+
         &-home, &-life, &-work {
-            font-size: 52px;
+            font-size: 35px;
+            &:hover {
+                color: #423f77;
+            }
         }
         img {
-            width: 60px;
-            height: 60px;
+            width: 35px;
+            height: 35px;
             border-radius: 100%;
         }
     }
@@ -42,3 +67,7 @@
         }
     }
 }
+
+.done {
+    color: rgb(6, 207, 6);
+} 
