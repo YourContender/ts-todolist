@@ -1,10 +1,13 @@
 import { FC, useState } from "react"; 
 import { Task } from "../../../types/types";
-import { IoHomeOutline } from "react-icons/io5";
+import { TiEdit } from "react-icons/ti";
 import { MdNightlife } from "react-icons/md";
-import { BsPersonWorkspace } from "react-icons/bs";
 import { IoMdDoneAll } from "react-icons/io";
+import { IoHomeOutline } from "react-icons/io5";
+import { IoMdArrowBack } from "react-icons/io";
 import { IoCheckmarkSharp } from "react-icons/io5";
+import { BsPersonWorkspace } from "react-icons/bs";
+import { PiDotsThreeOutline } from "react-icons/pi";
 import '../../../sass/list-tasks/Tasks-style.scss';
 
 interface ItemTaskProps {
@@ -62,17 +65,26 @@ const ItemTask: FC<ItemTaskProps> = ({
                 {
                     !showRemoveButton 
                     ? 
-                        <div className="task_methods-date"
-                            onClick={() => setShowRemoveButton(true)}
-                        >
+                        <div className="task_methods-date">
                             <span>{formattedDate}</span>
+                            <PiDotsThreeOutline 
+                                className="task_methods-other" 
+                                onClick={() => setShowRemoveButton(true)} />
                         </div>
                     :
-                    <div className="task_methods-remove"
-                        onClick={() => setShowRemoveButton(false)}
-                    >
+                    <div className="task_methods-click">
+                        <button className="task_methods-back"
+                            onClick={() => setShowRemoveButton(false)}
+                        >
+                            <IoMdArrowBack />
+                        </button>
+    
+                        <button className="task_methods-edit">
+                            <TiEdit />
+                        </button>
+
                         <button
-                            className="task_remove"
+                            className="task_methods-remove"
                             onClick={() => removeTaskFromList(item.id)}
                         >
                             &times;

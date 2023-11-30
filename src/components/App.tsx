@@ -3,7 +3,6 @@ import { Forms } from "./forms/Forms";
 import { Task } from "../types/types";
 import { FullListTasks } from "../components/list-tasks/FullListTasks";
 import { Header } from "./header/Header";
-import { Test } from "./header/Test";
 
 const App: FC = () => {
     const [listTasks, setListTasks] = useState<Task[]>([]);
@@ -57,8 +56,6 @@ const App: FC = () => {
                 listTasks={listTasks} 
                 setShowModalForm={setShowModalForm}
                 removeTaskFromList={removeTaskFromList}/>
-            
-            <Test percent={20}/>
         </div>
     )
 };

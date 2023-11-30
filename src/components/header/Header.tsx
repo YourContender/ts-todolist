@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from "react";
 import '../../sass/header-styles/Header-styles.scss';
-import { Test } from "./Test";
+import { Diagram } from "./diagram/Diagram";
 import { Task } from "../../types/types";
 
 interface ListTasksProps {
@@ -71,8 +71,12 @@ const Header: FC<ListTasksProps> = ({ listTasks }) => {
                 </div>
 
                 <div className="header_right-complete">
-                    <Test percent={!isNaN(percentDone) ? percentDone : 0}/>
-                    <span>{!isNaN(percentDone) ? percentDone : 0}% completed tasks</span>
+                    <Diagram percent={!isNaN(percentDone) ? percentDone : 0}/>
+                    
+                    <span>
+                        {!isNaN(percentDone) ? percentDone : 0}
+                        % completed tasks
+                    </span>
                 </div>
             </div>
         </div>

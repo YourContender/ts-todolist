@@ -81,7 +81,6 @@ const Forms: FC<ItemsTasksProps> = ({
                     type="text" 
                     placeholder="enter title"
                     onChange={createTask}
-                    // disabled={true}
                 />
                 <input 
                     name="description"
@@ -90,7 +89,7 @@ const Forms: FC<ItemsTasksProps> = ({
                     onChange={createTask}
                 />
             </div>
-
+        
             <button 
                 onClick={() => addTaskToDatabase()} 
                 className="forms_btn"

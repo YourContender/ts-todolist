@@ -4,7 +4,7 @@ interface CircleProps {
   percent: number;
 }
 
-const Test: React.FC<CircleProps> = ({ percent }) => {
+const Diagram: React.FC<CircleProps> = ({ percent }) => {
   const radius = 35;
   const circumference = 2 * Math.PI * radius;
   const dashoffset = circumference * (1 - percent / 100);
@@ -33,4 +33,4 @@ const Test: React.FC<CircleProps> = ({ percent }) => {
   );
 };
 
-export { Test }
+export { Diagram }
