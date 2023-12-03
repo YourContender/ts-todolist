@@ -19,18 +19,34 @@
     {
       "title": "home tasks",
       "description": "hello",
+      "id": "67ce549a-5d7f-42a3-9ea5-1fe5e9074510",
       "category": "home",
-      "time": "2023-11-30T23:33:17.176Z",
-      "complete": false,
-      "id": "67ce549a-5d7f-42a3-9ea5-1fe5e9074510"
+      "complete": true,
+      "time": "2023-11-30T23:33:17.176Z"
     },
     {
-      "title": "тест",
-      "description": "тест1",
-      "category": "life",
-      "time": "2023-11-30T23:52:41.604Z",
+      "title": "Hello world! ",
+      "description": "Hey hey hey",
+      "category": "work",
+      "time": "2023-12-03T14:53:56.815Z",
       "complete": false,
-      "id": "89bcfc70-3250-4a69-8152-18f5a8671a58"
+      "id": "ec5778cc-6c85-48fd-bf83-ac469db7ad42"
+    },
+    {
+      "title": "Life task",
+      "description": "example task descr",
+      "id": "c206d041-b1d2-419e-aaae-98914a35e78f",
+      "category": "life",
+      "complete": false,
+      "time": "2023-12-03T17:07:46.939Z"
+    },
+    {
+      "title": "йцукк",
+      "description": "фывф",
+      "category": "life",
+      "time": "2023-12-03T20:41:10.838Z",
+      "complete": false,
+      "id": "4ac80101-822a-4584-8480-410649f31af7"
     }
   ]
 }

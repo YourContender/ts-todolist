@@ -24,7 +24,7 @@ const Diagram: React.FC<CircleProps> = ({ percent }) => {
         cy="55"
         r={radius}
         fill="none"
-        stroke="#270acc"
+        stroke="#f503fd"
         strokeWidth="10"
         strokeDasharray={circumference}
         strokeDashoffset={dashoffset}

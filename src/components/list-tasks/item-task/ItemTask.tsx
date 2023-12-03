@@ -8,7 +8,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { BsPersonWorkspace } from "react-icons/bs";
 import { PiDotsThreeOutline } from "react-icons/pi";
-import '../../../sass/list-tasks/Tasks-style.scss';
+import '../../../sass/list-tasks/task/Tasks-style.scss';
 
 interface ItemTaskProps {
     item: Task;

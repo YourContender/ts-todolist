@@ -56,16 +56,18 @@ const FullListTasks: FC<ItemsTasksProps> = ({
     }
     return (
         <div className="tasks">
-            {
-                listTasks.map((item, i) => {
-                    return <ItemTask 
-                        key={i} 
-                        item={item} 
-                        removeTaskFromList={removeTaskFromList}
-                        toggleCompleteTask={toggleCompleteTask}
-                    />
-                })
-            }
+            <div className="tasks_container">
+                {
+                    listTasks.map((item, i) => {
+                        return <ItemTask 
+                            key={i} 
+                            item={item} 
+                            removeTaskFromList={removeTaskFromList}
+                            toggleCompleteTask={toggleCompleteTask}
+                        />
+                    })
+                }
+            </div>
 
             <div className="tasks_data">
                 <div className="tasks_data-result">  
