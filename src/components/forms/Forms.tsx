@@ -57,6 +57,7 @@ const Forms: FC<ItemsTasksProps> = ({
 
             if (res.status === 201) {
                 setListTasks([...listTasks, task]);
+                setShowModalForm(false);
             }
         } catch (error) {
             console.error('Error adding task to database: ', error);
@@ -67,13 +68,13 @@ const Forms: FC<ItemsTasksProps> = ({
     return (
         <div className="forms">
             <div className="forms_container">
-               <div className="forms_container-hide">
+                <div className="forms_container-hide">
                     <button
                         onClick={() => setShowModalForm(false)}
                     >
                         &times;
-                    </button>
-               </div>
+                    </button>  
+                </div>
                 <div className="forms_container-fields">
                     <select 
                         name="category"
@@ -84,6 +85,7 @@ const Forms: FC<ItemsTasksProps> = ({
                         <option value="life">life</option>
                         <option value="work">work</option>
                     </select>
+
                     <input 
                         name="title"
                         type="text" 
@@ -96,14 +98,14 @@ const Forms: FC<ItemsTasksProps> = ({
                         placeholder="enter description"
                         onChange={createTask}
                     />
+                
+                    <button 
+                        onClick={() => addTaskToDatabase()} 
+                        className="forms_container-create"
+                    >
+                        create
+                    </button>
                 </div>
-            
-                <button 
-                    onClick={() => addTaskToDatabase()} 
-                    className="forms_container-create"
-                >
-                    add task
-                </button>
             </div>
         </div>
     )
