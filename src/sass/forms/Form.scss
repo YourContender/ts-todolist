@@ -18,7 +18,10 @@
             margin-top: 40px;
             width: 150px;
             height: 55px;
-            background: linear-gradient(90deg, rgba(118,194,237,1) 0%, rgba(237,20,247,0.8575805322128851) 48%, rgba(0,155,255,1) 100%);
+            background: linear-gradient(90deg, 
+                rgba(118,194,237,1) 0%, 
+                rgba(237,20,247,0.8575805322128851) 48%, 
+                rgba(0,155,255,1) 100%);
             border-radius: 15px;
             border: none;
             outline: none;
@@ -31,7 +34,10 @@
             transition: 1s ease-in;
             &:hover {
                 transition: 1s ease-in;
-                background: linear-gradient(90deg, rgba(22,70,240,1) 0%, rgba(247,20,173,0.8575805322128851) 48%, rgba(0,255,214,1) 100%);
+                background: linear-gradient(90deg, 
+                    rgba(22,70,240,1) 0%, 
+                    rgba(247,20,173,0.8575805322128851) 48%, 
+                    rgba(0,255,214,1) 100%);
             }
         }
         &-fields {
@@ -69,6 +75,21 @@
             input::placeholder {
                 color: #000;
                 text-transform: uppercase;
+            }
+            input:focus, input:active {
+                color: #fff;
+            }
+            &-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 620px;
+                label {
+                    font-size: 20px;
+                    color: #fff;
+                    letter-spacing: 1px;
+                    font-family: 'Work Sans', sans-serif;
+                }
             }
         }
         &-hide {

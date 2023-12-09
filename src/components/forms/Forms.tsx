@@ -1,7 +1,9 @@
 import React, { FC, useState, useMemo  } from "react";
 import { Task } from "../../types/types";
 import { v4 as uuidv4 } from 'uuid';
+import { API } from '../../services/api'
 import "../../sass/forms/Form.scss"
+import { FormsView } from "./FormsView";
 
 interface ItemsTasksProps {
     listTasks: Task[];
@@ -12,16 +14,6 @@ interface ItemsTasksProps {
 const Forms: FC<ItemsTasksProps> = ({ 
     setListTasks, listTasks, setShowModalForm
 }) => {
-    const initialStateTask: Task = {
-        title: '',
-        description: '',
-        category: '',
-        time: new Date(),
-        complete: false,
-        id: ''
-    }
-
-    const [task, setTask] = useState<Task>(initialStateTask);
     const [selectedCategory, setSelectedCategory] = useState<string>('life');
 
     const uuid: string = useMemo(() => uuidv4(), []);
@@ -30,24 +22,21 @@ const Forms: FC<ItemsTasksProps> = ({
         setSelectedCategory(e.target.value);
     }
 
-    const createTask = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTask({
-            ...task,    
-            [e.target.name]: e.target.value,
+    const addTaskToDatabase = async (values: any) => {
+        let taskCurr = {
+            title: values.title,
+            description: values.description,
             time: new Date(),
             complete: false,
             id: uuid,
             category: selectedCategory
-        })
-    }
+        }
 
-    const addTaskToDatabase = async () => {
         try {
-            const res = await fetch('http://localhost:3001/listTasks', {
+            const res = await fetch(API, {
                 method: 'POST',
                 body: JSON.stringify({
-                    ...task,
-                    category: selectedCategory
+                    ...taskCurr
                 }),
                 headers: {
                     'Accept': 'application/json',
@@ -56,58 +45,20 @@ const Forms: FC<ItemsTasksProps> = ({
             });
 
             if (res.status === 201) {
-                setListTasks([...listTasks, task]);
+                setListTasks([...listTasks, taskCurr]);
                 setShowModalForm(false);
             }
         } catch (error) {
             console.error('Error adding task to database: ', error);
         }
-        
     }
 
     return (
-        <div className="forms">
-            <div className="forms_container">
-                <div className="forms_container-hide">
-                    <button
-                        onClick={() => setShowModalForm(false)}
-                    >
-                        &times;
-                    </button>  
-                </div>
-                <div className="forms_container-fields">
-                    <select 
-                        name="category"
-                        value={selectedCategory}
-                        onChange={changeCategoryTask}
-                    >
-                        <option value="home">home</option>
-                        <option value="life">life</option>
-                        <option value="work">work</option>
-                    </select>
-
-                    <input 
-                        name="title"
-                        type="text" 
-                        placeholder="enter title"
-                        onChange={createTask}
-                    />
-                    <input 
-                        name="description"
-                        type="text"
-                        placeholder="enter description"
-                        onChange={createTask}
-                    />
-                
-                    <button 
-                        onClick={() => addTaskToDatabase()} 
-                        className="forms_container-create"
-                    >
-                        create
-                    </button>
-                </div>
-            </div>
-        </div>
+        <FormsView
+            setShowModalForm={setShowModalForm}
+            selectedCategory={selectedCategory}
+            changeCategoryTask={changeCategoryTask}
+            addTaskToDatabase={addTaskToDatabase}/>
     )
 }
 
