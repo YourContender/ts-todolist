@@ -1,9 +1,9 @@
 import React, { FC, useState, useMemo  } from "react";
-import { Task } from "../../types/types";
 import { v4 as uuidv4 } from 'uuid';
 import { API } from '../../services/api'
-import "../../sass/forms/Form.scss"
+import { Task } from "../../types/types";
 import { FormsView } from "./FormsView";
+import "../../sass/forms/Form.scss"
 
 interface ItemsTasksProps {
     listTasks: Task[];

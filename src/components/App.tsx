@@ -14,7 +14,6 @@ const App: FC = () => {
                 const res = await fetch('http://localhost:3001/listTasks');
                 const body: Task[] = await res.json();
                 setListTasks(body);
-                console.log('work', body)
             } catch {
                 console.log('error')
             }
@@ -22,11 +21,8 @@ const App: FC = () => {
         fetchData();
     }, [])
         
-
     const removeTaskFromList = async (id: string) => {
         let filtered = listTasks.filter(item => {
-            console.log('item id: ', item.id);
-            console.log('id: ', id)
             return item.id !== id
         });
         let API = 'http://localhost:3001/listTasks';

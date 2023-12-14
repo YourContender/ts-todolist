@@ -20,17 +20,20 @@ const FormsView: FC<FormsViewProps> = ({
 		validationSchema: Yup.object().shape({
 			title: Yup
                 .string()
-				.required("Обов'язкове поле")
+				.required("Title field is required")
 				.min(5, "Min 5 words")
 				.max(20, "Max enter 20 words"),
 			description: Yup
                 .string()
-                .required("Обов'язкове поле")
+                .required("Description field is required")
+                .min(10, "Min 10 words")
+				.max(50, "Max enter 50 words")
 		}),
 		onSubmit: (values) => {
 			console.log(values);
 		},
 	});
+    console.log(touched)
 
     return (
         <div className="forms">
@@ -59,24 +62,40 @@ const FormsView: FC<FormsViewProps> = ({
                     <div className="forms_container-fields-item">
                         <label>title: </label>
                         <input 
+                            className={errors.title && touched.title  ? 
+                                "forms_container-fields-item-input error" : 
+                                "forms_container-fields-item-input"}
                             onChange={handleChange}
                             value={values.title}
+                            onBlur={handleBlur}
                             name="title"
                             type="text"
                             placeholder="enter title"
                         />
+                        {errors.title && touched.title ? (
+                            <div className="field_error">{errors.title}</div>
+                        ) : null}
                     </div>
+                    
 
                     <div className="forms_container-fields-item">
                         <label>description: </label>
                         <input 
+                            className={errors.description && touched.description ? 
+                                "forms_container-fields-item-input error":
+                                "forms_container-fields-item-input"}
                             onChange={handleChange}
                             value={values.description}
+                            onBlur={handleBlur}
                             name="description"
                             type="text"
                             placeholder="enter description"
                         />
+                        {errors.description && touched.description ? (
+                            <div className="field_error">{errors.description}</div>
+                        ) : null}
                     </div>
+
                 
                     <button 
                         onClick={() => addTaskToDatabase(values)} 
