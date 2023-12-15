@@ -13,7 +13,7 @@ import '../../../sass/list-tasks/task/Tasks-style.scss';
 interface ItemTaskProps {
     item: Task;
     removeTaskFromList: (id: string) => void;
-    toggleCompleteTask: (id: string) => void;
+    toggleCompleteTask: (id: string, title?: string, description?: string) => void;
     setShowModalEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -37,6 +37,12 @@ const ItemTask: FC<ItemTaskProps> = ({
 
     const editDescriptionTask = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEditDescription(e.target.value);
+    }
+
+    const saveChangesEditingTask = () => {
+        toggleCompleteTask(item.id, editTitle, editDescription);
+
+        setShowEditFields(false);
     }
 
     return (
@@ -118,7 +124,7 @@ const ItemTask: FC<ItemTaskProps> = ({
                                         onClick={() => setShowEditFields(true)}/>
                                 :
                                     <IoCheckmarkSharp
-                                        onClick={() => setShowEditFields(false)}/>
+                                        onClick={saveChangesEditingTask}/>
                             }
                         </button>
 

@@ -22,12 +22,12 @@ const FullListTasks: FC<ItemsTasksProps> = ({
         return listComplete.length;
     }
 
-    const toggleCompleteTask = async (id: string) => {
+    const toggleCompleteTask = async (id: string, title?: string, description?: string) => {
         let filtered = listTasks.map(item => {
             if (item.id === id) {
                 return { 
-                    title: item.title,
-                    description: item.description,
+                    title: title ? title : item.title,
+                    description: description ? description : item.description,
                     id: item.id,
                     category: item.category,
                     complete: !item.complete,
