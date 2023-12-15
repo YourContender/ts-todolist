@@ -1,4 +1,4 @@
-import { FC } from "react"; 
+import { FC, useState } from "react"; 
 import { Task } from "../../types/types";
 import { ItemTask } from "./item-task/ItemTask";
 import { TfiPlus } from "react-icons/tfi";
@@ -14,6 +14,7 @@ interface ItemsTasksProps {
 const FullListTasks: FC<ItemsTasksProps> = ({ 
     listTasks, setShowModalForm, removeTaskFromList, setListTasks
 }) => {
+    const [showModalEdit, setShowModalEdit] = useState<boolean>(false);
 
     const quantityCompleteTasks = () => {
         let listComplete = listTasks.filter(item => item.complete)
@@ -64,6 +65,7 @@ const FullListTasks: FC<ItemsTasksProps> = ({
                             item={item} 
                             removeTaskFromList={removeTaskFromList}
                             toggleCompleteTask={toggleCompleteTask}
+                            setShowModalEdit={setShowModalEdit}
                         />
                     })
                 }

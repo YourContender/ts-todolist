@@ -14,18 +14,30 @@ interface ItemTaskProps {
     item: Task;
     removeTaskFromList: (id: string) => void;
     toggleCompleteTask: (id: string) => void;
+    setShowModalEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ItemTask: FC<ItemTaskProps> = ({ 
-    item, removeTaskFromList, toggleCompleteTask
+    item, removeTaskFromList, toggleCompleteTask, setShowModalEdit
 }) => {
     const [showRemoveButton, setShowRemoveButton] = useState<boolean>(false);
+    const [showEditFields, setShowEditFields] = useState<boolean>(false);
+    const [editTitle, setEditTitle] = useState<string>(item.title);
+    const [editDescription, setEditDescription] = useState<string>(item.description);
 
     const formattedDate = new Intl.DateTimeFormat('en-US', {
         day: '2-digit',
         month: '2-digit',
         year: 'numeric',
     }).format(new Date(item.time));
+
+    const editTitleTask = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEditTitle(e.target.value);
+    }
+
+    const editDescriptionTask = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEditDescription(e.target.value);
+    }
 
     return (
         <div className="task">
@@ -52,14 +64,32 @@ const ItemTask: FC<ItemTaskProps> = ({
                 }
             </div>
 
-            <div className="task_content">
-                <div className="task_content-title">
-                    <h1>{item.title}</h1>
-                </div>
-                <div className="task_content-descr">
-                    <span>{item.description}</span>
-                </div>
-            </div>
+            {
+                showEditFields ? 
+                    <div className="task_content">
+                        <div className="task_content-title">
+                            <input 
+                                className="task_content-edit"
+                                value={editTitle}  
+                                onChange={editTitleTask}/>
+                        </div>
+                        <div className="task_content-descr">
+                            <input 
+                                className="task_content-edit"
+                                value={editDescription}
+                                onChange={editDescriptionTask}/>
+                        </div>
+                    </div> 
+                :
+                    <div className="task_content">
+                        <div className="task_content-title">
+                            <h1>{item.title}</h1>
+                        </div>
+                        <div className="task_content-descr">
+                            <span>{item.description}</span>
+                        </div>
+                    </div>
+            }
 
             <div className="task_methods">
                 {
@@ -76,11 +106,20 @@ const ItemTask: FC<ItemTaskProps> = ({
                         <button className="task_methods-back"
                             onClick={() => setShowRemoveButton(false)}
                         >
-                            <IoMdArrowBack />
+                            <IoMdArrowBack 
+                                onClick={() => setShowEditFields(false)}/>
                         </button>
     
                         <button className="task_methods-edit">
-                            <TiEdit />
+                            
+                            {
+                                !showEditFields ?
+                                    <TiEdit 
+                                        onClick={() => setShowEditFields(true)}/>
+                                :
+                                    <IoCheckmarkSharp
+                                        onClick={() => setShowEditFields(false)}/>
+                            }
                         </button>
 
                         <button
@@ -92,7 +131,6 @@ const ItemTask: FC<ItemTaskProps> = ({
                     </div>
                 }
             </div>
-
         </div>
     )
 }
