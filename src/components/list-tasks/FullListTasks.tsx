@@ -22,7 +22,7 @@ const FullListTasks: FC<ItemsTasksProps> = ({
         return listComplete.length;
     }
 
-    const toggleCompleteTask = async (id: string, title?: string, description?: string) => {
+    const changeDataTask = async (id: string, title?: string, description?: string) => {
         let filtered = listTasks.map(item => {
             if (item.id === id) {
                 return { 
@@ -64,7 +64,7 @@ const FullListTasks: FC<ItemsTasksProps> = ({
                             key={i} 
                             item={item} 
                             removeTaskFromList={removeTaskFromList}
-                            toggleCompleteTask={toggleCompleteTask}
+                            changeDataTask={changeDataTask}
                             setShowModalEdit={setShowModalEdit}
                         />
                     })
