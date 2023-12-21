@@ -39,6 +39,7 @@ const ItemTask: FC<ItemTaskProps> = ({
     const saveChangesEditingTask = () => {
         changeDataTask(item.id, editTitle, editDescription);
         setShowEditFields(false);
+        setShowRemoveButton(false);
     }
 
     return (

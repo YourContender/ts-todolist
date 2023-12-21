@@ -1,13 +1,16 @@
 import { FC, useState, useEffect } from "react";
-import '../../sass/header-styles/Header-styles.scss';
 import { Diagram } from "./diagram/Diagram";
 import { Task } from "../../types/types";
+import '../../sass/header-styles/Header-styles.scss';
+import { SwitchTheme } from "../switch-theme/SwitchTheme";
 
 interface ListTasksProps {
     listTasks: Task[];
+    setChangeTheme: React.Dispatch<React.SetStateAction<boolean>>;
+    changeTheme: boolean;
 }
 
-const Header: FC<ListTasksProps> = ({ listTasks }) => {
+const Header: FC<ListTasksProps> = ({ listTasks, setChangeTheme, changeTheme }) => {
     const [percentDone, setPercentDone ] = useState<number>(0);
     const [currentTime, setCurrentTime] = useState(new Date());
     const [quantityHomeTasks, setQuantityHomeTasks] = useState<number>(0);
@@ -45,8 +48,13 @@ const Header: FC<ListTasksProps> = ({ listTasks }) => {
     }).format(currentTime);
 
     return (
-        <div className="header">
+        <div className={changeTheme ? "header noon" : "header"}>
             <div className="header_left">
+                <div className="header_left-switch">
+                    <SwitchTheme 
+                        setChangeTheme={setChangeTheme} 
+                        changeTheme={changeTheme}/>
+                </div>
                 <div className="header_left-title">
                     My Todo
                 </div>

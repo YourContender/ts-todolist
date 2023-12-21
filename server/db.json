@@ -1,52 +1,12 @@
 {
   "listTasks": [
     {
-      "title": "work test1 ",
-      "description": "work test descr",
-      "id": "6a682fa5-5e6b-4d76-ad9c-cfb7194f2b81",
-      "category": "work",
-      "complete": true,
-      "time": "2023-11-26T23:22:37.322Z"
-    },
-    {
-      "title": "Hello world! !!!!",
-      "description": "Hey hey hey",
-      "id": "ec5778cc-6c85-48fd-bf83-ac469db7ad42",
-      "category": "work",
+      "title": "Hello world",
+      "description": "example description",
+      "time": "2023-12-21T14:44:46.153Z",
       "complete": false,
-      "time": "2023-12-03T14:53:56.815Z"
-    },
-    {
-      "title": "first task test modal window",
-      "description": "interesting",
-      "category": "home",
-      "time": "2023-12-07T00:32:11.873Z",
-      "complete": false,
-      "id": "8d64c0f5-d788-41e1-9523-fc08f65c6c17"
-    },
-    {
-      "title": "sucess test",
-      "description": "descr test",
-      "id": "8e26f315-f4e8-4818-a68b-3233b4d33b82",
-      "category": "work",
-      "complete": true,
-      "time": "2023-12-09T18:22:48.795Z"
-    },
-    {
-      "title": "test api",
-      "description": "test hello world",
-      "time": "2023-12-09T18:51:17.155Z",
-      "complete": false,
-      "id": "c7753a48-83ae-4113-a2ab-aaf766259454",
+      "id": "34061848-35d6-40bb-8432-16e2faebc8ae",
       "category": "home"
-    },
-    {
-      "title": "hello world",
-      "description": "hello hey hey hey",
-      "time": "2023-12-21T08:46:37.482Z",
-      "complete": false,
-      "id": "4d70089f-7ce7-4ef3-b93e-53c617429521",
-      "category": "work"
     }
   ]
 }

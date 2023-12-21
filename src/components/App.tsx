@@ -7,6 +7,7 @@ import { Header } from "./header/Header";
 const App: FC = () => {
     const [listTasks, setListTasks] = useState<Task[]>([]);
     const [showModalForm, setShowModalForm] = useState<boolean>(false);
+    const [changeTheme, setChangeTheme] = useState<boolean>(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,7 +39,10 @@ const App: FC = () => {
 
 	return (
         <div>
-            <Header listTasks={listTasks}/>
+            <Header 
+                listTasks={listTasks}
+                setChangeTheme={setChangeTheme}
+                changeTheme={changeTheme}/>
             {
                 showModalForm ? 
                     <Forms 
@@ -48,6 +52,7 @@ const App: FC = () => {
                 : null
             }
             <FullListTasks 
+                changeTheme={changeTheme}
                 setListTasks={setListTasks} 
                 listTasks={listTasks} 
                 setShowModalForm={setShowModalForm}
