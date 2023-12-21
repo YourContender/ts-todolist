@@ -6,14 +6,14 @@ import '../../sass/list-tasks/ListTasks-style.scss';
 
 interface ItemsTasksProps {
     listTasks: Task[];
-    setListTasks: React.Dispatch<React.SetStateAction<Task[]>>;
-    removeTaskFromList: (id: string) => void;
-    setShowModalForm: React.Dispatch<React.SetStateAction<boolean>>;
     changeTheme: boolean;
+    removeTaskFromList: (id: string) => void;
+    setListTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+    setShowModalForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const FullListTasks: FC<ItemsTasksProps> = ({ 
-    listTasks, setShowModalForm, removeTaskFromList, setListTasks, changeTheme
+    listTasks, setShowModalForm, removeTaskFromList, setListTasks, changeTheme, 
 }) => {
     const quantityCompleteTasks = () => {
         let listComplete = listTasks.filter(item => item.complete)

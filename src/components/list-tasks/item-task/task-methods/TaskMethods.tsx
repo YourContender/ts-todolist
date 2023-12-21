@@ -30,6 +30,7 @@ const TaskMethods: FC<TaskMethodProps> = ({
 }) => {
     const removeTaskFromDatabase = () => {
         setRemoveClassForTask(true);
+        setShowRemoveButton(false);
         
         setTimeout(() => {
             removeTaskFromList(item.id);

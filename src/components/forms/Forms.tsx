@@ -7,8 +7,8 @@ import "../../sass/forms/Form.scss"
 
 interface ItemsTasksProps {
     listTasks: Task[];
-    setListTasks: React.Dispatch<React.SetStateAction<Task[]>>
-    setShowModalForm: React.Dispatch<React.SetStateAction<boolean>>
+    setListTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+    setShowModalForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Forms: FC<ItemsTasksProps> = ({ 
