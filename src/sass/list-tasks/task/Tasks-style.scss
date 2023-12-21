@@ -8,6 +8,15 @@
     margin-top: 20px;
     padding-bottom: 7px;
     cursor: pointer;
+    &-del {
+        display: flex;
+        align-items: center;
+        border-bottom: .5px solid #807e7e;
+        width: 800px;
+        margin-top: 20px;
+        padding-bottom: 7px;
+        animation: remove-task .5s forwards;
+    }
     &_checkbox {
         margin-left: 25px;
         font-size: 25px;
@@ -122,3 +131,15 @@
 .done {
     color: rgb(6, 207, 6);
 } 
+
+@keyframes remove-task {
+    0% {
+
+    }
+    50% {
+
+    }
+    100% {
+        transform: translateX(-100px);
+    }
+}

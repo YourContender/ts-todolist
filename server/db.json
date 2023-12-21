@@ -9,22 +9,6 @@
       "time": "2023-11-26T23:22:37.322Z"
     },
     {
-      "title": "create new app",
-      "description": "with ts",
-      "id": "5b900fbc-5929-4f8d-b810-0ae64d4fccc2",
-      "category": "work",
-      "complete": true,
-      "time": "2023-11-30T23:28:25.392Z"
-    },
-    {
-      "title": "home tasks",
-      "description": "hello",
-      "id": "67ce549a-5d7f-42a3-9ea5-1fe5e9074510",
-      "category": "home",
-      "complete": false,
-      "time": "2023-11-30T23:33:17.176Z"
-    },
-    {
       "title": "Hello world! !!!!",
       "description": "Hey hey hey",
       "id": "ec5778cc-6c85-48fd-bf83-ac469db7ad42",
@@ -33,52 +17,12 @@
       "time": "2023-12-03T14:53:56.815Z"
     },
     {
-      "title": "Life task",
-      "description": "example task descr",
-      "id": "c206d041-b1d2-419e-aaae-98914a35e78f",
-      "category": "life",
-      "complete": false,
-      "time": "2023-12-03T17:07:46.939Z"
-    },
-    {
-      "title": "Test edit method 1",
-      "description": "descr12",
-      "id": "4ac80101-822a-4584-8480-410649f31af7",
-      "category": "life",
-      "complete": false,
-      "time": "2023-12-03T20:41:10.838Z"
-    },
-    {
-      "title": "hello world",
-      "description": "example description",
-      "category": "life",
-      "time": "2023-12-07T00:18:22.938Z",
-      "complete": false,
-      "id": "53d218d4-a03a-4480-8a74-c2e87a7c5f69"
-    },
-    {
       "title": "first task test modal window",
       "description": "interesting",
       "category": "home",
       "time": "2023-12-07T00:32:11.873Z",
       "complete": false,
       "id": "8d64c0f5-d788-41e1-9523-fc08f65c6c17"
-    },
-    {
-      "title": "test again title",
-      "description": "test again descr",
-      "id": "6acdc489-2234-4755-890b-574e249001db",
-      "category": "home",
-      "complete": true,
-      "time": "2023-12-09T18:18:59.960Z"
-    },
-    {
-      "title": "asda",
-      "description": "abcdefg",
-      "id": "ff6d96c5-cc44-49e4-ae61-104a444019c1",
-      "category": "home",
-      "complete": true,
-      "time": "2023-12-09T18:21:45.325Z"
     },
     {
       "title": "sucess test",
@@ -97,12 +41,12 @@
       "category": "home"
     },
     {
-      "title": "юля жопка",
-      "description": "с пробками",
-      "id": "8e982d36-aa0b-4cd1-b920-5eaffbe9d7a0",
-      "category": "life",
-      "complete": true,
-      "time": "2023-12-09T23:13:55.334Z"
+      "title": "hello world",
+      "description": "hello hey hey hey",
+      "time": "2023-12-21T08:46:37.482Z",
+      "complete": false,
+      "id": "4d70089f-7ce7-4ef3-b93e-53c617429521",
+      "category": "work"
     }
   ]
 }

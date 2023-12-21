@@ -14,8 +14,6 @@ interface ItemsTasksProps {
 const FullListTasks: FC<ItemsTasksProps> = ({ 
     listTasks, setShowModalForm, removeTaskFromList, setListTasks
 }) => {
-    const [showModalEdit, setShowModalEdit] = useState<boolean>(false);
-
     const quantityCompleteTasks = () => {
         let listComplete = listTasks.filter(item => item.complete)
 
@@ -65,7 +63,6 @@ const FullListTasks: FC<ItemsTasksProps> = ({
                             item={item} 
                             removeTaskFromList={removeTaskFromList}
                             changeDataTask={changeDataTask}
-                            setShowModalEdit={setShowModalEdit}
                         />
                     })
                 }

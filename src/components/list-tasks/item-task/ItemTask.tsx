@@ -11,7 +11,6 @@ interface ItemTaskProps {
     item: Task;
     removeTaskFromList: (id: string) => void;
     changeDataTask: (id: string, title?: string, description?: string) => void;
-    setShowModalEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ItemTask: FC<ItemTaskProps> = ({ 
@@ -21,6 +20,7 @@ const ItemTask: FC<ItemTaskProps> = ({
     const [showEditFields, setShowEditFields] = useState<boolean>(false);
     const [editTitle, setEditTitle] = useState<string>(item.title);
     const [editDescription, setEditDescription] = useState<string>(item.description);
+    const [removeClassForTask, setRemoveClassForTask] = useState<boolean>(false);
 
     const formattedDate = new Intl.DateTimeFormat('en-US', {
         day: '2-digit',
@@ -42,7 +42,7 @@ const ItemTask: FC<ItemTaskProps> = ({
     }
 
     return (
-        <div className="task">
+        <div className={!removeClassForTask ? "task" : "task-del"}>
             <TaskCategory item={item}/>
             <TaskComplete 
                 item={item}
@@ -67,7 +67,8 @@ const ItemTask: FC<ItemTaskProps> = ({
                 setShowEditFields={setShowEditFields} 
                 removeTaskFromList={removeTaskFromList}
                 setShowRemoveButton={setShowRemoveButton} 
-                saveChangesEditingTask={saveChangesEditingTask}/>
+                setRemoveClassForTask={setRemoveClassForTask}
+                saveChangesEditingTask={saveChangesEditingTask}/>  
         </div>
     )
 }

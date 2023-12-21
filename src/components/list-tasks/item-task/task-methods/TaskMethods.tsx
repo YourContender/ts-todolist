@@ -14,6 +14,7 @@ interface TaskMethodProps {
     removeTaskFromList: (id: string) => void;
     setShowRemoveButton: React.Dispatch<React.SetStateAction<boolean>>;
     setShowEditFields: React.Dispatch<React.SetStateAction<boolean>>; 
+    setRemoveClassForTask: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const TaskMethods: FC<TaskMethodProps> = ({ 
@@ -24,8 +25,18 @@ const TaskMethods: FC<TaskMethodProps> = ({
     setShowEditFields, 
     removeTaskFromList,
     setShowRemoveButton, 
-    saveChangesEditingTask
+    saveChangesEditingTask,
+    setRemoveClassForTask
 }) => {
+    const removeTaskFromDatabase = () => {
+        setRemoveClassForTask(true);
+        
+        setTimeout(() => {
+            removeTaskFromList(item.id);
+            setRemoveClassForTask(false);
+        }, 500)
+    }
+
     return (
         <div className="task_methods">
             {
@@ -59,7 +70,7 @@ const TaskMethods: FC<TaskMethodProps> = ({
 
                     <button
                         className="task_methods-remove"
-                        onClick={() => removeTaskFromList(item.id)}
+                        onClick={removeTaskFromDatabase}
                     >
                         &times;
                     </button>
