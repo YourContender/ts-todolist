@@ -1,8 +1,8 @@
-import { FC, useState } from "react"; 
+import { FC } from "react"; 
 import { Task } from "../../types/types";
 import { ItemTask } from "./item-task/ItemTask";
-import { TfiPlus } from "react-icons/tfi";
-import '../../sass/list-tasks/ListTasks-style.scss';
+import { Footer } from "../footer/Footer";
+import '../../sass/list-tasks/list-tasks.scss';
 
 interface ItemsTasksProps {
     listTasks: Task[];
@@ -15,12 +15,6 @@ interface ItemsTasksProps {
 const FullListTasks: FC<ItemsTasksProps> = ({ 
     listTasks, setShowModalForm, removeTaskFromList, setListTasks, changeTheme, 
 }) => {
-    const quantityCompleteTasks = () => {
-        let listComplete = listTasks.filter(item => item.complete)
-
-        return listComplete.length;
-    }
-
     const changeDataTask = async (id: string, title?: string, description?: string) => {
         let filtered = listTasks.map(item => {
             if (item.id === id) {
@@ -29,7 +23,7 @@ const FullListTasks: FC<ItemsTasksProps> = ({
                     description: description ? description : item.description,
                     id: item.id,
                     category: item.category,
-                    complete: !item.complete,
+                    complete: title && description ? item.complete : !item.complete,
                     time: item.time
                 }
             }
@@ -52,8 +46,8 @@ const FullListTasks: FC<ItemsTasksProps> = ({
         if (res.status === 200) {
             setListTasks(filtered);
         }
-
     }
+
     return (
         <div className={changeTheme ? "tasks moon-bg" : "tasks"}>
             <div className="tasks_container">
@@ -69,16 +63,9 @@ const FullListTasks: FC<ItemsTasksProps> = ({
                 }
             </div>
 
-            <div className="tasks_data">
-                <div className="tasks_data-result">  
-                    completed: <span>{quantityCompleteTasks()}</span> 
-                </div>
-                <div className="tasks_data-create">
-                    <button onClick={() => setShowModalForm(true)}>
-                        <TfiPlus />
-                    </button>
-                </div>
-            </div>
+            <Footer 
+                setShowModalForm={setShowModalForm} 
+                listTasks={listTasks}/>
         </div>
     )
 }

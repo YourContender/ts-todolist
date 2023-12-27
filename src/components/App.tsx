@@ -35,7 +35,6 @@ const App: FC = () => {
         if (res.status === 200) {
             setListTasks(filtered);
         }
-        
     }
 
 	return (
