@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .footer {
     width: 800px;
     margin-bottom: 15px;
@@ -5,28 +7,34 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 25px;
-    border: 1px solid gray;
+    border: 1px solid $default-gray-color;
     border-radius: 15px;
     padding: 5px 15px 5px 15px;
-    background-color: rgba(29, 28, 28, 0.349);
+    background-color: $light-dark-color;
     &_container {
         display: flex;
         align-items: center;
         font-size: 22px;
         padding-left: 10px;
-        color: #807e7e;
+        color: $black-color;
+        letter-spacing: 1px;
         &-item {
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            p {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
         span {
             font-weight: 700;
-            background-color: rgb(117, 116, 116);
+            background-color: $light-gray-color;
             padding: 4px 10px;
             border-radius: 100%;
-            color: #fff;
+            color: $default-white-color;
             margin-left: 5px;
             margin-right: 50px;
         }
@@ -40,12 +48,12 @@
             padding-top: 8px;
             border-radius: 100%;
             font-size: 42px;
-            background-color: rgb(1, 96, 184);
+            background-color: $create-blue-color;
             color: #fff;
             border: none;
             outline: none;
             &:hover {
-                background-color: rgb(38, 146, 247);
+                background-color: $light-blue-color;
             }
         }
     }

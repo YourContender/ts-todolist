@@ -1,9 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Work+Sans:300,regular,500,600,700);
+@import "../../variables.scss";
 
 .task {
     display: flex;
     align-items: center;
-    border-bottom: .5px solid #807e7e;
+    border-bottom: .5px solid $light-gray-color;
     width: 800px;
     margin-top: 20px;
     padding-bottom: 7px;
@@ -14,12 +15,12 @@
     &-del {
         display: flex;
         align-items: center;
-        border-bottom: .5px solid #807e7e;
+        border-bottom: .5px solid $light-gray-color;
         width: 800px;
         margin-top: 20px;
         padding-bottom: 7px;
         animation: remove-task .5s forwards;
-        background-color: rgba(255, 5, 5, 0.315);
+        background-color: $red-remove-color;
         border-radius: 20px;
     }
     &_checkbox {
@@ -39,9 +40,9 @@
             height: 20px;
             padding-left: 15px;
             outline: none;
-            border: 1px solid #fff;
+            border: 1px solid $default-white-color;
             background: none;
-            color: #fff;
+            color: $default-white-color;
         }
         &-title {
             h1 {
@@ -52,14 +53,14 @@
                 letter-spacing: 1px;
                 text-transform: uppercase;
                 font-size: 18px;
-                color: #fff;
+                color: $default-white-color;
             }
         }
         &-descr {
             span {
                 font-size: 14px;
                 letter-spacing: .5px;
-                color: #ffffffa8;
+                color: $middle-white-color;
                 font-weight: 400;
                 font-family: 'Work Sans', sans-serif;
             }
@@ -73,9 +74,9 @@
 
         &-home, &-life, &-work {
             font-size: 30px;
-            color: #fff;
+            color: $default-white-color;
             &:hover {
-                color: #c3c6c7;
+                color: $hover-gray-color;
             }
         }
         img {
@@ -100,7 +101,7 @@
             span {
                 margin-right: 30px;
                 font-size: 14px;
-                color: #fff;
+                color: $default-white-color;
             }
         }
         &-edit, &-remove, &-back {
@@ -112,29 +113,29 @@
         }
         &-remove {
             font-size: 42px;
-            color: rgba(226, 34, 34, 0.801);
+            color: $active-remove-color;
             &:hover {
-                color: red;
+                color: $default-red-color;
             }
         }
         &-back {
-            color: #fff;
+            color: $default-white-color;
         }
         &-edit{
-            color: #fff;
+            color: $default-white-color;
             &:hover {
-                color: rgb(0, 119, 128);
+                color: $mineral-color;
             }
         }
         &-other {
             font-size: 30px;
-            color: #fff;
+            color: $default-white-color;
         }
     }
 }
 
 .done {
-    color: rgb(6, 207, 6);
+    color: $light-green-color;
 } 
 
 @keyframes remove-task {

@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .tasks {
     display: flex;
     flex-direction: column;
@@ -24,10 +26,10 @@
         align-items: center;
         min-width: 850px;
         min-height: 455px;
-        border: 1px solid rgb(173, 171, 171);
+        border: 1px solid $border-gray-color;
         padding: 12px 20px 20px 20px;
         margin-top: 15px;
-        background-color: rgba(12, 11, 11, 0.47);
+        background-color: $middle-dark-color;
         border-radius: 12px;
         overflow: auto;
         &::-webkit-scrollbar {
@@ -35,11 +37,11 @@
             height: 8px;
         }
         &::-webkit-scrollbar-thumb {
-            background-color: #ce4bb3;
+            background-color: $default-purple-color;
             border-radius: 6px; 
         }
         &::-webkit-scrollbar-thumb:hover {
-            background-color: #555; 
+            background-color: $default-gray-color; 
         }
     }
     &_data {
@@ -49,20 +51,20 @@
         justify-content: space-between;
         align-items: center;
         margin-top: 35px;
-        border: 1px solid gray;
+        border: 1px solid $default-gray-color;
         border-radius: 15px;
         padding: 5px 15px 5px 15px;
-        background-color: rgba(29, 28, 28, 0.349);
+        background-color: $light-dark-color;
         &-result {
             font-size: 22px;
             padding-left: 10px;
-            color: #807e7e;
+            color: $default-gray-color;
             span {
                 font-weight: 700;
-                background-color: rgb(117, 116, 116);
+                background-color: $light-gray-color;
                 padding: 4px 10px;
                 border-radius: 100%;
-                color: #fff;
+                color: $default-white-color;
                 margin-left: 5px;
             }
         }
@@ -75,12 +77,12 @@
                 padding-top: 8px;
                 border-radius: 100%;
                 font-size: 42px;
-                background-color: rgb(1, 96, 184);
-                color: #fff;
+                background-color: $create-blue-color;
+                color: $default-white-color;
                 border: none;
                 outline: none;
                 &:hover {
-                    background-color: rgb(38, 146, 247);
+                    background-color: $light-blue-color;
                 }
             }
         }

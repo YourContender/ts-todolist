@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .switch {
     display: inline-block;
     position: relative;
@@ -8,7 +10,7 @@
         top: 2px;
         right: 2px;
         z-index: 1;
-        color: rgb(248, 252, 5);
+        color: $default-yellow-color;
         font-weight: 700;
         font-size: 20px;
     }
@@ -19,7 +21,7 @@
         z-index: 1;
         font-weight: 700;
         font-size: 20px;
-        color: rgb(210, 208, 214);
+        color: $hover-gray-color;
     }
 }
 
@@ -36,7 +38,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ce4bb4cb;
+    background-color: $move-purple-color;
     border-radius: 15px;
     transition: .3s;
     cursor: pointer;
@@ -45,20 +47,20 @@
 .move::before {
     position: absolute;
     content: '';
-    background-color: #fff;
+    background-color: $default-white-color;
     width: 20px;
     height: 20px;
     border-radius: 50%;
     top: 2px;
     bottom: 0;
     left: 2px;
-    box-shadow: 0 3.2px 8px #000;
+    box-shadow: 0 3.2px 8px $black-color;
     transition: .3s;
     z-index: 2;
 }
 
 input:checked + .move {
-    background-color: #e64b4bee;
+    background-color: $hot-red-color;
 }
 
 input:checked + .move::before {
