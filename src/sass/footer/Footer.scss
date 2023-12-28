@@ -1,18 +1,26 @@
-.tasks_data {
+.footer {
     width: 800px;
     margin-bottom: 15px;
     display: flex;  
     justify-content: space-between;
     align-items: center;
-    margin-top: 35px;
+    margin-top: 25px;
     border: 1px solid gray;
     border-radius: 15px;
     padding: 5px 15px 5px 15px;
     background-color: rgba(29, 28, 28, 0.349);
-    &-result {
+    &_container {
+        display: flex;
+        align-items: center;
         font-size: 22px;
         padding-left: 10px;
         color: #807e7e;
+        &-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
         span {
             font-weight: 700;
             background-color: rgb(117, 116, 116);
@@ -23,7 +31,7 @@
             margin-right: 50px;
         }
     }
-    &-create {
+    &_create {
         display: flex;
         align-items: center;
         button {

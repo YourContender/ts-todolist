@@ -8,6 +8,9 @@
     margin-top: 20px;
     padding-bottom: 7px;
     cursor: pointer;
+    &:last-child {
+        border-bottom: none;
+    }
     &-del {
         display: flex;
         align-items: center;

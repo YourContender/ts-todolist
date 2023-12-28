@@ -3,16 +3,17 @@ import { v4 as uuidv4 } from 'uuid';
 import { API } from '../../services/api'
 import { Task } from "../../types/types";
 import { FormsView } from "./FormsView";
-import "../../sass/forms/Form.scss"
+import "../../sass/forms/form.scss"
 
 interface ItemsTasksProps {
     listTasks: Task[];
     setListTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+    setFilteredTasks: React.Dispatch<React.SetStateAction<Task[]>>;
     setShowModalForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Forms: FC<ItemsTasksProps> = ({ 
-    setListTasks, listTasks, setShowModalForm
+    setListTasks, listTasks, setShowModalForm, setFilteredTasks
 }) => {
     const [selectedCategory, setSelectedCategory] = useState<string>('life');
 
@@ -46,6 +47,7 @@ const Forms: FC<ItemsTasksProps> = ({
 
             if (res.status === 201) {
                 setListTasks([...listTasks, taskCurr]);
+                setFilteredTasks([...listTasks, taskCurr])
                 setShowModalForm(false);
             }
         } catch (error) {

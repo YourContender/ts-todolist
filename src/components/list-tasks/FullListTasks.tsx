@@ -7,16 +7,24 @@ import '../../sass/list-tasks/list-tasks.scss';
 interface ItemsTasksProps {
     listTasks: Task[];
     changeTheme: boolean;
+    filteredTasks: Task[];
     removeTaskFromList: (id: string) => void;
+    setFilteredTasks: React.Dispatch<React.SetStateAction<Task[]>>;
     setListTasks: React.Dispatch<React.SetStateAction<Task[]>>;
     setShowModalForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const FullListTasks: FC<ItemsTasksProps> = ({ 
-    listTasks, setShowModalForm, removeTaskFromList, setListTasks, changeTheme, 
+    listTasks, 
+    changeTheme, 
+    filteredTasks, 
+    setFilteredTasks,
+    setShowModalForm, 
+    removeTaskFromList, 
 }) => {
     const changeDataTask = async (id: string, title?: string, description?: string) => {
-        let filtered = listTasks.map(item => {
+        console.log(title)
+        let filtered = filteredTasks.map(item => {
             if (item.id === id) {
                 return { 
                     title: title ? title : item.title,
@@ -44,7 +52,18 @@ const FullListTasks: FC<ItemsTasksProps> = ({
         })
 
         if (res.status === 200) {
-            setListTasks(filtered);
+            setFilteredTasks(filtered);
+        }
+    }
+
+    const filterListTasks = (filter: string) => {
+        console.log('work', filter)
+        if (filter === 'complete') {
+            setFilteredTasks([...listTasks].filter(item => item.complete));
+        } else if (filter === 'process') {
+            setFilteredTasks([...listTasks].filter(item => !item.complete));
+        } else {
+            setFilteredTasks([...listTasks]);
         }
     }
 
@@ -52,7 +71,7 @@ const FullListTasks: FC<ItemsTasksProps> = ({
         <div className={changeTheme ? "tasks moon-bg" : "tasks"}>
             <div className="tasks_container">
                 {
-                    listTasks.map((item, i) => {
+                    filteredTasks.map((item, i) => {
                         return <ItemTask 
                             key={i} 
                             item={item} 
@@ -65,7 +84,10 @@ const FullListTasks: FC<ItemsTasksProps> = ({
 
             <Footer 
                 setShowModalForm={setShowModalForm} 
-                listTasks={listTasks}/>
+                listTasks={listTasks}
+                filterListTasks={filterListTasks}
+                filteredTasks={filteredTasks}
+                setFilteredTasks={setFilteredTasks}/>
         </div>
     )
 }

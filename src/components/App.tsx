@@ -6,6 +6,7 @@ import { Header } from "./header/Header";
 
 const App: FC = () => {
     const [listTasks, setListTasks] = useState<Task[]>([]);
+    const [filteredTasks, setFilteredTasks] = useState<Task[]>([]);
     const [showModalForm, setShowModalForm] = useState<boolean>(false);
     const [changeTheme, setChangeTheme] = useState<boolean>(false);
 
@@ -15,12 +16,13 @@ const App: FC = () => {
                 const res = await fetch('http://localhost:3001/listTasks');
                 const body: Task[] = await res.json();
                 setListTasks(body);
+                setFilteredTasks(body);
             } catch {
                 console.log('error')
             }
         } 
         fetchData();
-    }, [])
+    }, []);
         
     const removeTaskFromList = async (id: string) => {
         let filtered = listTasks.filter(item => {
@@ -33,7 +35,7 @@ const App: FC = () => {
         });
 
         if (res.status === 200) {
-            setListTasks(filtered);
+            setFilteredTasks(filtered);
         }
     }
 
@@ -48,6 +50,7 @@ const App: FC = () => {
                     <Forms 
                         setListTasks={setListTasks} 
                         listTasks={listTasks}
+                        setFilteredTasks={setFilteredTasks}
                         setShowModalForm={setShowModalForm}/>
                 : null
             }
@@ -55,6 +58,8 @@ const App: FC = () => {
                 changeTheme={changeTheme}
                 setListTasks={setListTasks} 
                 listTasks={listTasks} 
+                filteredTasks={filteredTasks}
+                setFilteredTasks={setFilteredTasks}
                 setShowModalForm={setShowModalForm}
                 removeTaskFromList={removeTaskFromList}/>
         </div>
