@@ -8,6 +8,7 @@ interface ItemsTasksProps {
     listTasks: Task[];
     changeTheme: boolean;
     filteredTasks: Task[];
+    showModalForm: boolean;
     removeTaskFromList: (id: string) => void;
     setFilteredTasks: React.Dispatch<React.SetStateAction<Task[]>>;
     setListTasks: React.Dispatch<React.SetStateAction<Task[]>>;
@@ -18,12 +19,12 @@ const FullListTasks: FC<ItemsTasksProps> = ({
     listTasks, 
     changeTheme, 
     filteredTasks, 
+    showModalForm,
     setFilteredTasks,
     setShowModalForm, 
     removeTaskFromList, 
 }) => {
     const changeDataTask = async (id: string, title?: string, description?: string) => {
-        console.log(title)
         let filtered = filteredTasks.map(item => {
             if (item.id === id) {
                 return { 
@@ -87,6 +88,7 @@ const FullListTasks: FC<ItemsTasksProps> = ({
                 listTasks={listTasks}
                 filterListTasks={filterListTasks}
                 filteredTasks={filteredTasks}
+                showModalForm={showModalForm}
                 setFilteredTasks={setFilteredTasks}/>
         </div>
     )

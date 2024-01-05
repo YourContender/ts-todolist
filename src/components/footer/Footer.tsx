@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Task } from "../../types/types";
 import { TfiPlus } from "react-icons/tfi";
 import "../../sass/footer/footer.scss"; 
@@ -6,6 +6,7 @@ import "../../sass/footer/footer.scss";
 interface FooterProps {
     listTasks: Task[];
     filteredTasks: Task[];
+    showModalForm: boolean;
     filterListTasks: (filter: string) => void;
     setFilteredTasks: React.Dispatch<React.SetStateAction<Task[]>>;
     setShowModalForm: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,8 +15,20 @@ interface FooterProps {
 const Footer: FC<FooterProps> = ({ 
     setShowModalForm, 
     listTasks, 
+    showModalForm,
     filterListTasks 
 }) => {
+    const [startAnimation, setStartAnimation] = useState(false);
+
+    const openModalWindow = () => {
+        setStartAnimation(true);
+
+        setTimeout(() => {
+            setShowModalForm(true);
+            setStartAnimation(false);
+        }, 500)
+    }
+
     const quantityCompleteTasks = () => {
         let listComplete = [...listTasks].filter(item => item.complete);
         let progressTasks = [...listTasks].length - listComplete.length;
@@ -43,8 +56,8 @@ const Footer: FC<FooterProps> = ({
                     <span>{quantityCompleteTasks().complete}</span>    
                 </div> 
             </div>
-            <div className="footer_create">
-                <button onClick={() => setShowModalForm(true)}>
+            <div className={startAnimation ? "footer_create spin" : "footer_create"}>
+                <button onClick={openModalWindow}>
                     <TfiPlus />
                 </button>
             </div>

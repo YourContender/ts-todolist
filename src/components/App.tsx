@@ -58,6 +58,7 @@ const App: FC = () => {
                 changeTheme={changeTheme}
                 setListTasks={setListTasks} 
                 listTasks={listTasks} 
+                showModalForm={showModalForm}
                 filteredTasks={filteredTasks}
                 setFilteredTasks={setFilteredTasks}
                 setShowModalForm={setShowModalForm}
