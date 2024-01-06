@@ -95,3 +95,24 @@
     background-size: cover;
 	background-position: center;
 }
+
+@media (max-width: 650px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+        &_right {
+            margin-left: 0;
+        }
+        &_left {
+            height: 70px;
+            margin-bottom: 1px;
+            &-title {
+                margin-top: 45px;
+                font-size: 24px;
+            }
+            &-date {
+                display: none;
+            }
+        }
+    }
+}

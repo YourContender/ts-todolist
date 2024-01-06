@@ -140,3 +140,26 @@
         transform: translateY(0);
     }
 }
+
+@media (max-width: 650px) {
+    .forms {
+        &_container {
+            width: 500px;
+            &-fields {
+                background-position: center;
+                &-item {
+                    width: 450px;
+                    &-input {
+                        width: 260px;
+                    }
+                    select {
+                        width: 282px;
+                    }
+                }
+            }
+            &-create {
+                margin-top: 25px;
+            }
+        }
+    }
+}

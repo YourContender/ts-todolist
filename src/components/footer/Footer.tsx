@@ -52,7 +52,7 @@ const Footer: FC<FooterProps> = ({
                     <span>{quantityCompleteTasks().process}</span>    
                 </div> 
                 <div className="footer_container-item" onClick={() => filterListTasks('complete')}>
-                    <p>completed:</p> 
+                    <p>done:</p> 
                     <span>{quantityCompleteTasks().complete}</span>    
                 </div> 
             </div>

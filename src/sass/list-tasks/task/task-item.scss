@@ -155,3 +155,38 @@
         width: 565px;
     }
 }
+
+@media (max-width: 650px) {
+    .task {
+        width: 420px;
+        margin-top: 0;
+        &_category {
+            &-home, &-life, &-work {
+                font-size: 20px;
+            }
+        }
+        &_checkbox {
+            margin-left: 20px;
+        }
+        &_content {
+            padding-left: 20px;
+            &-title {
+                h1 {
+                    font-size: 16px;
+                }
+            }
+            &-descr {
+                span {
+                    font-size: 12px;
+                }
+            }
+        }
+        &_methods {
+            &-date {
+                span {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
