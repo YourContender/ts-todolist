@@ -109,7 +109,7 @@
 @media (max-width: 1050px) {
     .tasks {
         &_container {
-            min-width: 450px;
+            min-width: 300px;
             max-width: 570px;
             height: 354px;
         }
@@ -120,6 +120,33 @@
     .tasks {
         &_container {
             width: 450px;
+        }
+    }
+}
+
+@media (max-width: 539px) {
+    .tasks {
+        &_container {
+            width: 420px;
+            padding: 0;
+        }
+    }
+}
+
+@media (max-width: 435px) {
+    .tasks {
+        &_container {
+            width: 350px;
+            padding: 0;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .tasks {
+        &_container {
+            width: 310px;
+            padding: 0;
         }
     }
 }

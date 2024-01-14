@@ -163,3 +163,45 @@
         }
     }
 }
+
+@media (max-width: 520px) {
+    .forms {
+        &_container {
+            width: 380px;
+            &-fields {
+                background-position: center;
+                &-item {
+                    width: 350px;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    label {
+                        display: none;
+                    }
+                    &-input {
+                        width: 93%;
+                    }
+                    select {
+                        width: 100%;
+                    }
+                }
+            }
+            &-create {
+                margin-top: 25px;
+            }
+        }
+    }
+}
+
+@media (max-width: 435px) {
+    .forms {
+        &_container {
+            width: 300px;
+            &-fields {
+                background-position: center;
+                &-item {
+                    width: 265px;
+                }
+            }
+        }
+    }
+}

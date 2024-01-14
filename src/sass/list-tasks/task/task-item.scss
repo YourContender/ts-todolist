@@ -190,3 +190,49 @@
         }
     }
 }
+
+@media (max-width: 539px) {
+    .task {
+        width: 400px;
+        padding-bottom: 0;
+        &_content {
+            &-title {
+                h1 {
+                    font-size: 14px;
+                }
+            }
+        }
+        &_methods {
+            &-back, &-edit, &-remove {
+                svg {
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 435px) {
+    .task {
+        width: 330px;
+        &_content {
+            width: 150%;
+        }
+        &_methods {
+            &-date {
+                span {
+                    display: none;
+                }
+            }
+        }
+        &_category {
+            margin-left: 5px;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .task {
+        width: 300px;
+    }
+}
