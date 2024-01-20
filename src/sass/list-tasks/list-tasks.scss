@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: calc(100vh - 290px);
+    height: calc(100vh - 280px);
     background-image: radial-gradient(circle at 50% -20.71%, 
     #83434dc4 0, 
     #ff82ad 8.33%, 
@@ -27,7 +27,7 @@
         min-width: 850px;
         max-height: 450px;
         border: 1px solid $border-gray-color;
-        padding: 12px 20px 20px 20px;
+        padding: 0 20px 20px 20px;
         margin-top: 15px;
         background-color: $middle-dark-color;
         border-radius: 12px;
@@ -118,8 +118,10 @@
 
 @media (max-width: 650px) {
     .tasks {
+        height: calc(100vh - 210px);
         &_container {
             width: 450px;
+            height: 400px;
         }
     }
 }

@@ -10,11 +10,12 @@ import '../../../sass/list-tasks/task/task-item.scss';
 interface ItemTaskProps {
     item: Task;
     removeTaskFromList: (id: string) => void;
+    openInfoAboutTask: (id: string) => void;
     changeDataTask: (id: string, title?: string, description?: string) => void;
 }
 
 const ItemTask: FC<ItemTaskProps> = ({ 
-    item, removeTaskFromList, changeDataTask
+    item, removeTaskFromList, changeDataTask, openInfoAboutTask
 }) => {
     const [showRemoveButton, setShowRemoveButton] = useState<boolean>(false);
     const [showEditFields, setShowEditFields] = useState<boolean>(false);
@@ -43,7 +44,9 @@ const ItemTask: FC<ItemTaskProps> = ({
     }
 
     return (
-        <div className={!removeClassForTask ? "task" : "task-del"}>
+        <div 
+            className={!removeClassForTask ? "task" : "task-del"}
+        >
             <TaskCategory item={item}/>
             <TaskComplete 
                 item={item}
@@ -57,7 +60,7 @@ const ItemTask: FC<ItemTaskProps> = ({
                         editDescription={editDescription}
                         editDescriptionTask={editDescriptionTask}/>
                 :
-                    <TaskContent item={item}/>
+                    <TaskContent item={item} openInfoAboutTask={openInfoAboutTask}/>
             }
 
             <TaskMethods 

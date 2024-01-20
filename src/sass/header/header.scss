@@ -5,7 +5,7 @@
     background-image: url(../../img/bg-sun.jpg);
     background-size: cover;
 	background-position: center;
-    height: 290px;
+    height: 280px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -100,8 +100,23 @@
     .header {
         display: flex;
         flex-direction: column;
+        height: 210px;
         &_right {
             margin-left: 0;
+            height: 110px;
+            &-home, &-personal, &-work {
+                width: 55px;
+                height: 55px;
+                font-size: 14px;
+            }
+            &-home {
+                p {
+                    font-size: 20px;
+                }
+            }
+            &-category {
+                padding-top: 5px;
+            }
         }
         &_left {
             height: 70px;

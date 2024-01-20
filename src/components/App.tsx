@@ -3,12 +3,15 @@ import { Forms } from "./forms/Forms";
 import { Task } from "../types/types";
 import { FullListTasks } from "../components/list-tasks/FullListTasks";
 import { Header } from "./header/Header";
+import ModalTask from "./modal-task/ModalTask";
 
 const App: FC = () => {
     const [listTasks, setListTasks] = useState<Task[]>([]);
     const [filteredTasks, setFilteredTasks] = useState<Task[]>([]);
     const [showModalForm, setShowModalForm] = useState<boolean>(false);
     const [changeTheme, setChangeTheme] = useState<boolean>(false);
+    const [showInfoTask, setShowInfoTask] = useState<boolean>(false);
+    const [detailsAboutTask, setDetailsAboutTask] = useState<Task[]>([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -36,7 +39,15 @@ const App: FC = () => {
 
         if (res.status === 200) {
             setFilteredTasks(filtered);
+            setListTasks(filtered);
         }
+    }
+
+    const openInfoAboutTask = (id: string) => {
+        setShowInfoTask(true);
+
+        const currentTask = [...filteredTasks].filter(item => item.id === id);
+        setDetailsAboutTask(currentTask);
     }
 
 	return (
@@ -54,6 +65,13 @@ const App: FC = () => {
                         setShowModalForm={setShowModalForm}/>
                 : null
             }
+            {
+                showInfoTask ? 
+                    <ModalTask 
+                        item={detailsAboutTask[0]} 
+                        setShowInfoTask={setShowInfoTask} />
+                : null
+            }
             <FullListTasks 
                 changeTheme={changeTheme}
                 setListTasks={setListTasks} 
@@ -62,6 +80,7 @@ const App: FC = () => {
                 filteredTasks={filteredTasks}
                 setFilteredTasks={setFilteredTasks}
                 setShowModalForm={setShowModalForm}
+                openInfoAboutTask={openInfoAboutTask}
                 removeTaskFromList={removeTaskFromList}/>
         </div>
     )

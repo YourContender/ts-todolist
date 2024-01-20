@@ -11,6 +11,7 @@ interface ItemsTasksProps {
     showModalForm: boolean;
     removeTaskFromList: (id: string) => void;
     setFilteredTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+    openInfoAboutTask: (id: string) => void;
     setListTasks: React.Dispatch<React.SetStateAction<Task[]>>;
     setShowModalForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -18,10 +19,12 @@ interface ItemsTasksProps {
 const FullListTasks: FC<ItemsTasksProps> = ({ 
     listTasks, 
     changeTheme, 
+    setListTasks,
     filteredTasks, 
     showModalForm,
     setFilteredTasks,
     setShowModalForm, 
+    openInfoAboutTask,
     removeTaskFromList, 
 }) => {
     const changeDataTask = async (id: string, title?: string, description?: string) => {
@@ -54,6 +57,7 @@ const FullListTasks: FC<ItemsTasksProps> = ({
 
         if (res.status === 200) {
             setFilteredTasks(filtered);
+            setListTasks(filtered);
         }
     }
 
@@ -77,6 +81,7 @@ const FullListTasks: FC<ItemsTasksProps> = ({
                             key={i} 
                             item={item} 
                             removeTaskFromList={removeTaskFromList}
+                            openInfoAboutTask={openInfoAboutTask}
                             changeDataTask={changeDataTask}
                         />
                     })
