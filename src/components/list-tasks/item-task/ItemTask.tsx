@@ -5,7 +5,7 @@ import { TaskComplete } from "./task-complete/TaskComplete";
 import { TaskContent } from "./task-content/TaskContent";
 import { TaskEdit } from "./task-edit/TaskEdit";
 import { TaskMethods } from "./task-methods/TaskMethods";
-import '../../../sass/list-tasks/task/task-item.scss';
+import './task-item.scss';
 
 interface ItemTaskProps {
     item: Task;

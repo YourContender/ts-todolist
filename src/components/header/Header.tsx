@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from "react";
 import { Diagram } from "./diagram/Diagram";
 import { Task } from "../../types/types";
-import '../../sass/header/header.scss';
+import './header.scss';
 import { SwitchTheme } from "../switch-theme/SwitchTheme";
 
 interface ListTasksProps {

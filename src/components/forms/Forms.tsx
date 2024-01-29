@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { API } from '../../services/api';
 import { Task } from "../../types/types";
 import { FormsView } from "./FormsView";
-import "../../sass/forms/form.scss";
+import "./form.scss";
 
 interface ItemsTasksProps {
     listTasks: Task[];

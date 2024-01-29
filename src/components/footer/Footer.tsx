@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Task } from "../../types/types";
 import { TfiPlus } from "react-icons/tfi";
-import "../../sass/footer/footer.scss"; 
+import "./footer.scss"; 
 
 interface FooterProps {
     listTasks: Task[];

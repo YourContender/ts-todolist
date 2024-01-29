@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from "react";
-import { Forms } from "./forms/Forms";
-import { Task } from "../types/types";
-import { FullListTasks } from "../components/list-tasks/FullListTasks";
-import { Header } from "./header/Header";
-import ModalTask from "./modal-task/ModalTask";
+import { Forms } from "./components/forms/Forms";
+import { Task } from "./types/types";
+import { FullListTasks } from "./components/list-tasks/FullListTasks";
+import { Header } from "./components/header/Header";
+import ModalTask from "./components/modal-task/ModalTask";
 
 const App: FC = () => {
     const [listTasks, setListTasks] = useState<Task[]>([]);
@@ -82,10 +82,11 @@ const App: FC = () => {
                 setShowModalForm={setShowModalForm}
                 openInfoAboutTask={openInfoAboutTask}
                 removeTaskFromList={removeTaskFromList}/>
+                hello world
         </div>
     )
 };
 
-export default App;
+export  {App};
 
 

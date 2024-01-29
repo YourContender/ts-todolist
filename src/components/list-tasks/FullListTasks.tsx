@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Task } from "../../types/types";
 import { ItemTask } from "./item-task/ItemTask";
 import { Footer } from "../footer/Footer";
-import '../../sass/list-tasks/list-tasks.scss';
+import './list-tasks.scss';
 
 interface ItemsTasksProps {
     listTasks: Task[];
