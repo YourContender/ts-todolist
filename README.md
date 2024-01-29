@@ -2,13 +2,13 @@
 
 ---
 
-##### Простий у використанні, інтуітивно зрозумілий та водночас дуже гарний _todo-list_. Проект зроблений з використання _json.server_, завантажте репозиторій собі та пропишіть в консолі:
+##### Easy to use, intuitive and at the same time very beautiful _todo-list_. The project is made using _json.server_, download the repository yourself and write in the console:
 
 ```
 npm start
 ```
 
-##### Після чого запустіть проект прописавши в консолі:
+##### After that, start the project by typing in the console:
 
 ```
 npm run dev
@@ -20,18 +20,18 @@ npm run dev
 
 ---
 
-##### Щоб познайомитись з проектом ближче, пропоную протестити його функціонал, а саме:
+**To get to know the project better, I suggest testing its functionality, namely:**
 
-**_додавання нових задач_**
-**_редагування задач_**
-**_видалення задач_**
-**_відмітка виконаної задачі_**
-**_фільтрація задач_**
-**_відсотковий прорахунок виконаних задач_**
-**_зміна кольору фону_**
-**_детальна інформація по кожній задачі_**
+**_adding new tasks_**
+**_editing tasks_**
+**_deleting tasks_**
+**_mark of the completed task_**
+**_task filtering_**
+**_percentage calculation of completed tasks_**
+**_change the background color_**
+**_detailed information on each task_**
 
-##### Для мобільних пристоїв, реалізовано адаптив
+##### For mobile devices, adaptive is implemented
 
 ---
 
@@ -39,7 +39,7 @@ npm run dev
 
 ---
 
-**Під час виконання цього проекту, я використовував:**
+**During this project, I used:**
 
 > **_react_**
 
