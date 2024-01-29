@@ -22,14 +22,7 @@ npm run dev
 
 **To get to know the project better, I suggest testing its functionality, namely:**
 
-**_adding new tasks_**
-**_editing tasks_**
-**_deleting tasks_**
-**_mark of the completed task_**
-**_task filtering_**
-**_percentage calculation of completed tasks_**
-**_change the background color_**
-**_detailed information on each task_**
+> **_adding new tasks_** > **_editing tasks_** > **_deleting tasks_** > **_mark of the completed task_** > **_task filtering_** > **_percentage calculation of completed tasks_** > **_change the background color_** > **_detailed information on each task_**
 
 ##### For mobile devices, adaptive is implemented
 
