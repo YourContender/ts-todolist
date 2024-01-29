@@ -82,7 +82,6 @@ const App: FC = () => {
                 setShowModalForm={setShowModalForm}
                 openInfoAboutTask={openInfoAboutTask}
                 removeTaskFromList={removeTaskFromList}/>
-                hello world
         </div>
     )
 };

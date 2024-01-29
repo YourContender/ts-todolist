@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import '../../sass/modal-task/modal-task.scss';
 import { Task } from '../../types/types';
+import './modal-task.scss';
 
 interface ModalTaskProps {
     item: Task,
