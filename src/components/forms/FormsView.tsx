@@ -21,19 +21,25 @@ const FormsView: FC<FormsViewProps> = ({
 			title: Yup
                 .string()
 				.required("Title field is required")
-				.min(5, "Min 5 words")
-				.max(20, "Max enter 20 words"),
+				.min(2, "Min 2 words")
+				.max(50, "Max enter 50 words"),
 			description: Yup
                 .string()
                 .required("Description field is required")
-                .min(10, "Min 10 words")
-				.max(50, "Max enter 50 words")
+                .min(5, "Min 5 words")
+				.max(100, "Max enter 100 words")
 		}),
 		onSubmit: (values) => {
 			console.log(values);
 		},
 	});
-    console.log(touched)
+    
+    const createTask = () => {
+        if (!errors.title && !errors.description && 
+            values.title !== '' && values.description !== '') {
+            addTaskToDatabase(values);
+        }
+    }
 
     return (
         <div className="forms">
@@ -98,7 +104,7 @@ const FormsView: FC<FormsViewProps> = ({
 
                 
                     <button 
-                        onClick={() => addTaskToDatabase(values)} 
+                        onClick={() => createTask()} 
                         className="forms_container-create"
                     >
                         create

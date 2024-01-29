@@ -14,11 +14,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 550px;
+        max-width: 550px;
         min-height: 550px;
         border: 2px solid #fff;
         background: rgb(240,22,235);
-        background: linear-gradient(90deg, rgba(240,22,235,0.8939950980392157) 0%, rgba(141,20,247,0.9640231092436975) 60%, rgba(0,146,255,0.7987570028011204) 100%);
+        background: linear-gradient(
+            90deg,rgba(240,22,235,0.8939950980392157) 
+            0%,rgba(141,20,247,0.9640231092436975) 
+            60%,rgba(0,146,255,0.7987570028011204) 
+            100%);
         &-btn {
             position: absolute;
             right: 0;
@@ -56,6 +60,23 @@
         }
         &-text {
             color: #aaa6a6;
+        }
+    }
+}
+
+@media (max-width: 435px) {
+    .modal {
+        &_task {
+            width: 315px;
+            &-title {
+                font-size: 18px;
+            }
+            &-description, &-category, &-addition, &-id {
+                font-size: 16px;
+            }
+            &-label {
+                font-size: 18px;
+            }
         }
     }
 }
